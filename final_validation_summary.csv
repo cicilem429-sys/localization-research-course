@@ -1,0 +1,6 @@
+﻿method,macro_cep90_mean,macro_cep90_std,mean_error_average
+huber,0.7436,0.0431,0.4875
+fixed,0.6535,0.0501,0.4104
+adaptive,0.5715,0.0472,0.3679
+v5,0.5977,0.0389,0.3783
+v6,0.6214,0.0586,0.3875

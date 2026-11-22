@@ -1,0 +1,290 @@
+[
+  {
+    "path": ".gitignore",
+    "bytes": 96
+  },
+  {
+    "path": "README.md",
+    "bytes": 7216
+  },
+  {
+    "path": "adaptive_localization.py",
+    "bytes": 1186
+  },
+  {
+    "path": "adaptive_ten_anchor.py",
+    "bytes": 1557
+  },
+  {
+    "path": "agent_holdout_comparison.json",
+    "bytes": 487
+  },
+  {
+    "path": "analyze_strategy_complementarity.py",
+    "bytes": 2527
+  },
+  {
+    "path": "calibrate_noise.py",
+    "bytes": 1966
+  },
+  {
+    "path": "candidate_analysis.py",
+    "bytes": 1616
+  },
+  {
+    "path": "cluster_consistency.py",
+    "bytes": 1587
+  },
+  {
+    "path": "compare_localization_methods.py",
+    "bytes": 2307
+  },
+  {
+    "path": "compare_methods.py",
+    "bytes": 643
+  },
+  {
+    "path": "compare_v3_holdout.py",
+    "bytes": 1578
+  },
+  {
+    "path": "docs/PROVENANCE.md",
+    "bytes": 1712
+  },
+  {
+    "path": "docs/source_manifest.json",
+    "bytes": 12669
+  },
+  {
+    "path": "fast_cluster.py",
+    "bytes": 1942
+  },
+  {
+    "path": "fast_geometry.py",
+    "bytes": 3500
+  },
+  {
+    "path": "figures/method_comparison.svg",
+    "bytes": 6551
+  },
+  {
+    "path": "figures/per_seed.svg",
+    "bytes": 9964
+  },
+  {
+    "path": "final_statistical_validation.py",
+    "bytes": 7055
+  },
+  {
+    "path": "final_validation_results.json",
+    "bytes": 21621
+  },
+  {
+    "path": "final_validation_summary.csv",
+    "bytes": 200
+  },
+  {
+    "path": "generalization_results.json",
+    "bytes": 5684
+  },
+  {
+    "path": "geometry_consistency.py",
+    "bytes": 2946
+  },
+  {
+    "path": "hello_deepseek.py",
+    "bytes": 735
+  },
+  {
+    "path": "hybrid_localization.py",
+    "bytes": 1368
+  },
+  {
+    "path": "localization_agent.py",
+    "bytes": 4366
+  },
+  {
+    "path": "localization_agent_v2.py",
+    "bytes": 13290
+  },
+  {
+    "path": "localization_agent_v2_history.json",
+    "bytes": 6029
+  },
+  {
+    "path": "localization_experiment.py",
+    "bytes": 1956
+  },
+  {
+    "path": "localization_history.json",
+    "bytes": 1353
+  },
+  {
+    "path": "localization_tools.py",
+    "bytes": 3790
+  },
+  {
+    "path": "math_agent.py",
+    "bytes": 2774
+  },
+  {
+    "path": "math_tools.py",
+    "bytes": 3400
+  },
+  {
+    "path": "noise_estimation.py",
+    "bytes": 1478
+  },
+  {
+    "path": "noise_sensitivity.py",
+    "bytes": 2188
+  },
+  {
+    "path": "report/final_report.pdf",
+    "bytes": 244159
+  },
+  {
+    "path": "requirements-report.txt",
+    "bytes": 17
+  },
+  {
+    "path": "requirements.txt",
+    "bytes": 129
+  },
+  {
+    "path": "research_agent.py",
+    "bytes": 3927
+  },
+  {
+    "path": "research_agent_v3.py",
+    "bytes": 9042
+  },
+  {
+    "path": "research_agent_v3_history.json",
+    "bytes": 10762
+  },
+  {
+    "path": "research_agent_v4.py",
+    "bytes": 12493
+  },
+  {
+    "path": "research_agent_v4_history.json",
+    "bytes": 12545
+  },
+  {
+    "path": "research_agent_v5.py",
+    "bytes": 22766
+  },
+  {
+    "path": "research_agent_v5_history.json",
+    "bytes": 21238
+  },
+  {
+    "path": "research_agent_v6.py",
+    "bytes": 25783
+  },
+  {
+    "path": "research_agent_v6_history.json",
+    "bytes": 29953
+  },
+  {
+    "path": "research_environment_v3.py",
+    "bytes": 8385
+  },
+  {
+    "path": "results/reproduction_check.json",
+    "bytes": 326
+  },
+  {
+    "path": "scripts/build_report.py",
+    "bytes": 16617
+  },
+  {
+    "path": "ten_anchor_threshold.py",
+    "bytes": 2002
+  },
+  {
+    "path": "test_adaptive.py",
+    "bytes": 2259
+  },
+  {
+    "path": "test_adaptive_ten_anchor.py",
+    "bytes": 2901
+  },
+  {
+    "path": "test_candidate_analysis.py",
+    "bytes": 1131
+  },
+  {
+    "path": "test_cluster_spread.py",
+    "bytes": 1218
+  },
+  {
+    "path": "test_fast_cluster.py",
+    "bytes": 1372
+  },
+  {
+    "path": "test_generalization.py",
+    "bytes": 5363
+  },
+  {
+    "path": "test_geometry.py",
+    "bytes": 1003
+  },
+  {
+    "path": "test_geometry_noise.py",
+    "bytes": 1188
+  },
+  {
+    "path": "test_hybrid.py",
+    "bytes": 963
+  },
+  {
+    "path": "test_localization.py",
+    "bytes": 1031
+  },
+  {
+    "path": "test_noise_estimation.py",
+    "bytes": 1640
+  },
+  {
+    "path": "test_ten_anchor_noise.py",
+    "bytes": 2298
+  },
+  {
+    "path": "test_ten_anchors.py",
+    "bytes": 2745
+  },
+  {
+    "path": "test_weighted_localization.py",
+    "bytes": 3008
+  },
+  {
+    "path": "threshold_sensitivity.py",
+    "bytes": 1583
+  },
+  {
+    "path": "traditional_search.py",
+    "bytes": 3588
+  },
+  {
+    "path": "traditional_search_results.json",
+    "bytes": 9416
+  },
+  {
+    "path": "v3_holdout_comparison.json",
+    "bytes": 5221
+  },
+  {
+    "path": "verify_agent_holdout.py",
+    "bytes": 3628
+  },
+  {
+    "path": "verify_delivery.py",
+    "bytes": 2558
+  },
+  {
+    "path": "weighted_localization.py",
+    "bytes": 4314
+  }
+]

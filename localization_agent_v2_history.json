@@ -1,0 +1,127 @@
+{
+  "agent_model": "deepseek-chat",
+  "development_seed": 2033,
+  "holdout_seed": 3033,
+  "experiments": [
+    {
+      "method": "huber",
+      "parameter": 1.0,
+      "sample_count": 120,
+      "mean_error": 0.4607,
+      "cep90": 0.943,
+      "macro_cep90": 0.7196,
+      "per_noise": {
+        "0.2": {
+          "mean_error": 0.3043,
+          "cep90": 0.4014
+        },
+        "0.5": {
+          "mean_error": 0.3579,
+          "cep90": 0.597
+        },
+        "1.0": {
+          "mean_error": 0.72,
+          "cep90": 1.1604
+        }
+      },
+      "exact_outlier_detection_rate": null,
+      "round": 1
+    },
+    {
+      "method": "fixed_geometry",
+      "parameter": 3.0,
+      "sample_count": 120,
+      "mean_error": 0.5699,
+      "cep90": 1.0362,
+      "macro_cep90": 1.0249,
+      "per_noise": {
+        "0.2": {
+          "mean_error": 0.4244,
+          "cep90": 0.8808
+        },
+        "0.5": {
+          "mean_error": 0.5251,
+          "cep90": 0.9825
+        },
+        "1.0": {
+          "mean_error": 0.7604,
+          "cep90": 1.2114
+        }
+      },
+      "exact_outlier_detection_rate": 0.5417,
+      "round": 2
+    },
+    {
+      "method": "adaptive_geometry",
+      "parameter": 2.0,
+      "sample_count": 120,
+      "mean_error": 0.3931,
+      "cep90": 0.8612,
+      "macro_cep90": 0.6232,
+      "per_noise": {
+        "0.2": {
+          "mean_error": 0.1315,
+          "cep90": 0.2223
+        },
+        "0.5": {
+          "mean_error": 0.3488,
+          "cep90": 0.5338
+        },
+        "1.0": {
+          "mean_error": 0.6991,
+          "cep90": 1.1134
+        }
+      },
+      "exact_outlier_detection_rate": 0.75,
+      "round": 3
+    }
+  ],
+  "agent_summary": "# 三轮十节点鲁棒定位实验结果对比\n\n## 一、实验数据汇总\n\n| 轮次 | 方法 | 参数 | macro_cep90 | 平均误差 | 异常识别率 | 噪声0.2 CEP90 | 噪声0.5 CEP90 | 噪声1.0 CEP90 |\n|------|------|------|-------------|----------|------------|---------------|---------------|---------------|\n| 1 | huber | 1.0 | **0.7196** | 0.4607 | 未报告 | 0.4014 | 0.5970 | 1.1604 |\n| 2 | fixed_geometry | 3.0 | 1.0249 | 0.5699 | 0.5417 | 0.8808 | 0.9825 | 1.2114 |\n| 3 | adaptive_geometry | 2.0 | **0.6232** | **0.3931** | **0.75** | **0.2223** | **0.5338** | **1.1134** |\n\n## 二、逐项比较\n\n**1. macro_cep90（核心指标）**\n- adaptive_geometry (0.6232) < huber (0.7196) < fixed_geometry (1.0249)\n- adaptive_geometry 相比 huber 降低约 13.4%，相比 fixed_geometry 降低约 39.2%。\n\n**2. 平均误差**\n- adaptive_geometry (0.3931) 最低，huber (0.4607) 次之，fixed_geometry (0.5699) 最差。\n- 排序与 macro_cep90 一致，说明 adaptive_geometry 在整体精度和尾部风险上同时占优。\n\n**3. 不同噪声下的 CEP90**\n- 低噪声 (0.2)：adaptive_geometry 0.2223 显著优于 huber 0.4014 和 fixed_geometry 0.8808。\n- 中噪声 (0.5)：adaptive_geometry 0.5338 仍最优，huber 0.5970 接近。\n- 高噪声 (1.0)：三者差距缩小（1.1134 / 1.1604 / 1.2114），adaptive_geometry 仍略优，但优势明显减弱——说明高噪声+异常幅度场景是共同瓶颈。\n\n**4. 异常识别率**\n- adaptive_geometry 0.75 > fixed_geometry 0.5417；huber 本轮未报告该指标，无法直接比较。\n- 更高的异常识别率与更低的 macro_cep90 相互印证：自适应几何策略能更有效地剔除/降权异常测距。\n\n## 三、当前最好候选策略\n\n**adaptive_geometry（参数 2.0）** 是三轮中综合表现最好的候选，理由：\n1. 在 macro_cep90、平均误差、低/中噪声 CEP90 三项上均排名第一；\n2. 异常识别率最高（0.75），说明其鲁棒机制在起作用；\n3. 在高噪声下虽优势收窄，但仍未劣于其他方法，没有出现\"以牺牲极端场景换取平均改善\"的迹象。\n\nhuber(1.0) 是次优备选，在低噪声下表现稳健且实现简单；fixed_geometry(3.0) 在三项指标上均落后，本轮不推荐。\n\n## 四、重要局限说明\n\n- **样本有限**：每轮仅 120 个样本、单一参数点，统计波动不可忽略；参数敏感性（如 adaptive_geometry 在 1.5/2.5/3.0 下的表现）尚未探索，当前结论不能外推为\"参数 2.0 最优\"。\n- **方法覆盖不全**：每轮只测了一种方法的一个参数，未做同参数下的横向对照，方法间比较存在混杂因素。\n- **模拟≠真实**：实验使用模拟的正常噪声与异常幅度分布，真实部署中异常可能具有相关性、时变性或对抗性，几何构型也可能退化，模拟中的优势不保证在真实场景复现。\n- **未验证极端风险**：高噪声下三者 CEP90 均超过 1.1，尾部风险仍偏高，尚无证据表明已充分控制极端误差。\n\n**结论**：在本次有限模拟实验中，adaptive_geometry(2.0) 是当前最佳候选，但需更多参数扫描、更大样本和真实数据验证后才能形成可靠结论。本结果不构成对任何实际定位难题已解决的声明。",
+  "best_development_strategy": {
+    "method": "adaptive_geometry",
+    "parameter": 2.0,
+    "sample_count": 120,
+    "mean_error": 0.3931,
+    "cep90": 0.8612,
+    "macro_cep90": 0.6232,
+    "per_noise": {
+      "0.2": {
+        "mean_error": 0.1315,
+        "cep90": 0.2223
+      },
+      "0.5": {
+        "mean_error": 0.3488,
+        "cep90": 0.5338
+      },
+      "1.0": {
+        "mean_error": 0.6991,
+        "cep90": 1.1134
+      }
+    },
+    "exact_outlier_detection_rate": 0.75,
+    "round": 3
+  },
+  "holdout_result": {
+    "method": "adaptive_geometry",
+    "parameter": 2.0,
+    "sample_count": 120,
+    "mean_error": 0.3849,
+    "cep90": 0.8825,
+    "macro_cep90": 0.6259,
+    "per_noise": {
+      "0.2": {
+        "mean_error": 0.1216,
+        "cep90": 0.1898
+      },
+      "0.5": {
+        "mean_error": 0.3347,
+        "cep90": 0.5531
+      },
+      "1.0": {
+        "mean_error": 0.6985,
+        "cep90": 1.1347
+      }
+    },
+    "exact_outlier_detection_rate": 0.825
+  }
+}

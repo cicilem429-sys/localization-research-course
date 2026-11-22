@@ -1,0 +1,272 @@
+[
+  {
+    "scenario": "A_random_layout",
+    "sigma": 0.2,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.3156,
+    "cep90": 0.516,
+    "detection_rate": null
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 0.2,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.1304,
+    "cep90": 0.2381,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 0.2,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.1304,
+    "cep90": 0.2381,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 0.5,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.4242,
+    "cep90": 0.7049,
+    "detection_rate": null
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 0.5,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.2769,
+    "cep90": 0.4529,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 0.5,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.3186,
+    "cep90": 0.545,
+    "detection_rate": 0.8333
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 1.0,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.7308,
+    "cep90": 1.4369,
+    "detection_rate": null
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 1.0,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.5437,
+    "cep90": 0.9825,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "A_random_layout",
+    "sigma": 1.0,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.7289,
+    "cep90": 1.35,
+    "detection_rate": 0.7
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 0.2,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.4335,
+    "cep90": 0.6799,
+    "detection_rate": null
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 0.2,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.1499,
+    "cep90": 0.2573,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 0.2,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.1499,
+    "cep90": 0.2573,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 0.5,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.437,
+    "cep90": 0.7687,
+    "detection_rate": null
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 0.5,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.2508,
+    "cep90": 0.4429,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 0.5,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.2685,
+    "cep90": 0.501,
+    "detection_rate": 0.9333
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 1.0,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.9252,
+    "cep90": 1.552,
+    "detection_rate": null
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 1.0,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.6029,
+    "cep90": 1.0794,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "B_two_outliers",
+    "sigma": 1.0,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.7234,
+    "cep90": 1.1788,
+    "detection_rate": 0.8
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 0.2,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.2838,
+    "cep90": 0.4188,
+    "detection_rate": null
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 0.2,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.4204,
+    "cep90": 0.5427,
+    "detection_rate": 0.0
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 0.2,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.113,
+    "cep90": 0.1998,
+    "detection_rate": 1.0
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 0.5,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.3559,
+    "cep90": 0.5735,
+    "detection_rate": null
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 0.5,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.4241,
+    "cep90": 0.6658,
+    "detection_rate": 0.0
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 0.5,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.3734,
+    "cep90": 0.6002,
+    "detection_rate": 0.5667
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 1.0,
+    "method": "Huber",
+    "parameter": 1.0,
+    "sample_count": 30,
+    "mean_error": 0.7322,
+    "cep90": 1.1529,
+    "detection_rate": null
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 1.0,
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "sample_count": 30,
+    "mean_error": 0.6857,
+    "cep90": 1.087,
+    "detection_rate": 0.0
+  },
+  {
+    "scenario": "C_small_outlier",
+    "sigma": 1.0,
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "sample_count": 30,
+    "mean_error": 0.7762,
+    "cep90": 1.2044,
+    "detection_rate": 0.1667
+  }
+]

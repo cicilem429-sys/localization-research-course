@@ -1,0 +1,373 @@
+{
+  "experiment_budget": 3,
+  "development_seed": 2041,
+  "trials_per_case": 10,
+  "traditional_experiments": [
+    {
+      "method": "huber",
+      "parameter": 0.3,
+      "sample_count": 120,
+      "mean_error": 0.4969,
+      "cep90": 1.135,
+      "macro_cep90": 0.7524,
+      "max_error": 2.1713,
+      "exact_outlier_detection_rate": null,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1699,
+          "cep90": 0.3517
+        },
+        "standard|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3923,
+          "cep90": 0.7466
+        },
+        "standard|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 1.0338,
+          "cep90": 1.5304
+        },
+        "random_layout|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1728,
+          "cep90": 0.2682
+        },
+        "random_layout|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3377,
+          "cep90": 0.4705
+        },
+        "random_layout|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.9467,
+          "cep90": 1.3743
+        },
+        "two_outliers|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1723,
+          "cep90": 0.2244
+        },
+        "two_outliers|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4451,
+          "cep90": 0.6083
+        },
+        "two_outliers|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.9061,
+          "cep90": 1.4721
+        },
+        "small_outlier|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1416,
+          "cep90": 0.2393
+        },
+        "small_outlier|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4249,
+          "cep90": 0.5972
+        },
+        "small_outlier|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8191,
+          "cep90": 1.1456
+        }
+      },
+      "round": 1
+    },
+    {
+      "method": "fixed_geometry",
+      "parameter": 2.0,
+      "sample_count": 120,
+      "mean_error": 0.4505,
+      "cep90": 0.8134,
+      "macro_cep90": 0.6912,
+      "max_error": 1.9626,
+      "exact_outlier_detection_rate": 0.725,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1348,
+          "cep90": 0.2805
+        },
+        "standard|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3152,
+          "cep90": 0.5139
+        },
+        "standard|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.7147,
+          "cep90": 1.2343
+        },
+        "random_layout|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1395,
+          "cep90": 0.1971
+        },
+        "random_layout|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3737,
+          "cep90": 0.4713
+        },
+        "random_layout|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8321,
+          "cep90": 1.289
+        },
+        "two_outliers|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1459,
+          "cep90": 0.1746
+        },
+        "two_outliers|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3791,
+          "cep90": 0.5633
+        },
+        "two_outliers|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.6921,
+          "cep90": 1.2903
+        },
+        "small_outlier|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.4161,
+          "cep90": 0.526
+        },
+        "small_outlier|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.5155,
+          "cep90": 0.7306
+        },
+        "small_outlier|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.7471,
+          "cep90": 1.0236
+        }
+      },
+      "round": 2
+    },
+    {
+      "method": "adaptive_geometry",
+      "parameter": 2.5,
+      "sample_count": 120,
+      "mean_error": 0.4862,
+      "cep90": 0.9129,
+      "macro_cep90": 0.9544,
+      "max_error": 4.165,
+      "exact_outlier_detection_rate": 0.725,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1348,
+          "cep90": 0.2805
+        },
+        "standard|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3444,
+          "cep90": 0.5207
+        },
+        "standard|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.7698,
+          "cep90": 1.606
+        },
+        "random_layout|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1395,
+          "cep90": 0.1971
+        },
+        "random_layout|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3649,
+          "cep90": 0.4713
+        },
+        "random_layout|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8659,
+          "cep90": 1.6003
+        },
+        "two_outliers|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1339,
+          "cep90": 0.1746
+        },
+        "two_outliers|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4083,
+          "cep90": 0.5633
+        },
+        "two_outliers|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 1.3436,
+          "cep90": 3.896
+        },
+        "small_outlier|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.0973,
+          "cep90": 0.1631
+        },
+        "small_outlier|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4002,
+          "cep90": 0.734
+        },
+        "small_outlier|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8322,
+          "cep90": 1.2459
+        }
+      },
+      "round": 3
+    }
+  ],
+  "traditional_best": {
+    "method": "fixed_geometry",
+    "parameter": 2.0,
+    "sample_count": 120,
+    "mean_error": 0.4505,
+    "cep90": 0.8134,
+    "macro_cep90": 0.6912,
+    "max_error": 1.9626,
+    "exact_outlier_detection_rate": 0.725,
+    "per_case": {
+      "standard|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1348,
+        "cep90": 0.2805
+      },
+      "standard|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3152,
+        "cep90": 0.5139
+      },
+      "standard|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.7147,
+        "cep90": 1.2343
+      },
+      "random_layout|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1395,
+        "cep90": 0.1971
+      },
+      "random_layout|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3737,
+        "cep90": 0.4713
+      },
+      "random_layout|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.8321,
+        "cep90": 1.289
+      },
+      "two_outliers|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1459,
+        "cep90": 0.1746
+      },
+      "two_outliers|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3791,
+        "cep90": 0.5633
+      },
+      "two_outliers|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.6921,
+        "cep90": 1.2903
+      },
+      "small_outlier|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.4161,
+        "cep90": 0.526
+      },
+      "small_outlier|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.5155,
+        "cep90": 0.7306
+      },
+      "small_outlier|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.7471,
+        "cep90": 1.0236
+      }
+    },
+    "round": 2
+  },
+  "agent_best": {
+    "method": "fixed_geometry",
+    "parameter": 1.5,
+    "sample_count": 120,
+    "mean_error": 0.4643,
+    "cep90": 0.9434,
+    "macro_cep90": 0.7015,
+    "max_error": 2.1157,
+    "exact_outlier_detection_rate": 0.675,
+    "per_case": {
+      "standard|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1348,
+        "cep90": 0.2805
+      },
+      "standard|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3152,
+        "cep90": 0.5139
+      },
+      "standard|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.808,
+        "cep90": 1.1057
+      },
+      "random_layout|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1395,
+        "cep90": 0.1971
+      },
+      "random_layout|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3737,
+        "cep90": 0.4713
+      },
+      "random_layout|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.8674,
+        "cep90": 1.289
+      },
+      "two_outliers|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1459,
+        "cep90": 0.1746
+      },
+      "two_outliers|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3791,
+        "cep90": 0.5633
+      },
+      "two_outliers|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.7126,
+        "cep90": 1.4746
+      },
+      "small_outlier|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.3697,
+        "cep90": 0.5004
+      },
+      "small_outlier|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.4793,
+        "cep90": 0.5695
+      },
+      "small_outlier|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.8459,
+        "cep90": 1.2783
+      }
+    },
+    "round": 2
+  },
+  "score_difference": -0.0103
+}

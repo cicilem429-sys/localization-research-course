@@ -1,0 +1,5 @@
+# Versions read from the original experiment virtual environment.
+numpy==2.5.5
+scipy==1.18.1
+openai==3.57.0
+python-dotenv==1.2.4

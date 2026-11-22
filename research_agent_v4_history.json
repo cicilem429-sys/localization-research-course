@@ -1,0 +1,395 @@
+{
+  "model": "deepseek-chat",
+  "development_seed": 2050,
+  "holdout_seed": 9050,
+  "development_baselines": [
+    {
+      "method": "fixed",
+      "mean_error": 0.4457,
+      "macro_cep90": 0.6749,
+      "cep90": 0.9687
+    },
+    {
+      "method": "adaptive",
+      "mean_error": 0.4047,
+      "macro_cep90": 0.6279,
+      "cep90": 0.9563
+    }
+  ],
+  "experiments": [
+    {
+      "boundary": 1.5,
+      "direction": "low_fixed",
+      "mean_error": 0.4551,
+      "cep90": 0.9687,
+      "macro_cep90": 0.6891,
+      "max_error": 2.4234,
+      "fixed_selection_rate": 0.9833,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "mean_error": 0.1292,
+          "cep90": 0.2033
+        },
+        "standard|sigma=0.5": {
+          "mean_error": 0.3341,
+          "cep90": 0.4395
+        },
+        "standard|sigma=1.0": {
+          "mean_error": 0.6018,
+          "cep90": 0.9361
+        },
+        "random_layout|sigma=0.2": {
+          "mean_error": 0.133,
+          "cep90": 0.2257
+        },
+        "random_layout|sigma=0.5": {
+          "mean_error": 0.3147,
+          "cep90": 0.5141
+        },
+        "random_layout|sigma=1.0": {
+          "mean_error": 0.8143,
+          "cep90": 1.3643
+        },
+        "two_outliers|sigma=0.2": {
+          "mean_error": 0.1583,
+          "cep90": 0.2212
+        },
+        "two_outliers|sigma=0.5": {
+          "mean_error": 0.3261,
+          "cep90": 0.4627
+        },
+        "two_outliers|sigma=1.0": {
+          "mean_error": 0.9776,
+          "cep90": 1.4698
+        },
+        "small_outlier|sigma=0.2": {
+          "mean_error": 0.4156,
+          "cep90": 0.4808
+        },
+        "small_outlier|sigma=0.5": {
+          "mean_error": 0.3856,
+          "cep90": 0.6202
+        },
+        "small_outlier|sigma=1.0": {
+          "mean_error": 0.8712,
+          "cep90": 1.3314
+        }
+      },
+      "round": 1
+    },
+    {
+      "boundary": 0.5,
+      "direction": "high_fixed",
+      "mean_error": 0.4287,
+      "cep90": 0.9687,
+      "macro_cep90": 0.6917,
+      "max_error": 1.7395,
+      "fixed_selection_rate": 0.425,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "mean_error": 0.1292,
+          "cep90": 0.2033
+        },
+        "standard|sigma=0.5": {
+          "mean_error": 0.3488,
+          "cep90": 0.4689
+        },
+        "standard|sigma=1.0": {
+          "mean_error": 0.6242,
+          "cep90": 0.9361
+        },
+        "random_layout|sigma=0.2": {
+          "mean_error": 0.133,
+          "cep90": 0.2257
+        },
+        "random_layout|sigma=0.5": {
+          "mean_error": 0.3268,
+          "cep90": 0.5141
+        },
+        "random_layout|sigma=1.0": {
+          "mean_error": 0.8368,
+          "cep90": 1.3643
+        },
+        "two_outliers|sigma=0.2": {
+          "mean_error": 0.1583,
+          "cep90": 0.2212
+        },
+        "two_outliers|sigma=0.5": {
+          "mean_error": 0.3564,
+          "cep90": 0.5372
+        },
+        "two_outliers|sigma=1.0": {
+          "mean_error": 0.834,
+          "cep90": 1.2997
+        },
+        "small_outlier|sigma=0.2": {
+          "mean_error": 0.1134,
+          "cep90": 0.17
+        },
+        "small_outlier|sigma=0.5": {
+          "mean_error": 0.372,
+          "cep90": 0.6669
+        },
+        "small_outlier|sigma=1.0": {
+          "mean_error": 0.9114,
+          "cep90": 1.693
+        }
+      },
+      "round": 2
+    },
+    {
+      "boundary": 0.2,
+      "direction": "high_fixed",
+      "mean_error": 0.433,
+      "cep90": 0.9687,
+      "macro_cep90": 0.6739,
+      "max_error": 1.7395,
+      "fixed_selection_rate": 0.7917,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "mean_error": 0.1292,
+          "cep90": 0.2033
+        },
+        "standard|sigma=0.5": {
+          "mean_error": 0.3372,
+          "cep90": 0.4395
+        },
+        "standard|sigma=1.0": {
+          "mean_error": 0.6018,
+          "cep90": 0.9361
+        },
+        "random_layout|sigma=0.2": {
+          "mean_error": 0.133,
+          "cep90": 0.2257
+        },
+        "random_layout|sigma=0.5": {
+          "mean_error": 0.3147,
+          "cep90": 0.5141
+        },
+        "random_layout|sigma=1.0": {
+          "mean_error": 0.8143,
+          "cep90": 1.3643
+        },
+        "two_outliers|sigma=0.2": {
+          "mean_error": 0.1583,
+          "cep90": 0.2212
+        },
+        "two_outliers|sigma=0.5": {
+          "mean_error": 0.3261,
+          "cep90": 0.4627
+        },
+        "two_outliers|sigma=1.0": {
+          "mean_error": 0.8645,
+          "cep90": 1.2997
+        },
+        "small_outlier|sigma=0.2": {
+          "mean_error": 0.2601,
+          "cep90": 0.4692
+        },
+        "small_outlier|sigma=0.5": {
+          "mean_error": 0.3856,
+          "cep90": 0.6202
+        },
+        "small_outlier|sigma=1.0": {
+          "mean_error": 0.8712,
+          "cep90": 1.3314
+        }
+      },
+      "round": 3
+    },
+    {
+      "boundary": 0.1,
+      "direction": "high_fixed",
+      "mean_error": 0.4435,
+      "cep90": 0.9687,
+      "macro_cep90": 0.6749,
+      "max_error": 1.7395,
+      "fixed_selection_rate": 0.975,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "mean_error": 0.1292,
+          "cep90": 0.2033
+        },
+        "standard|sigma=0.5": {
+          "mean_error": 0.3341,
+          "cep90": 0.4395
+        },
+        "standard|sigma=1.0": {
+          "mean_error": 0.6018,
+          "cep90": 0.9361
+        },
+        "random_layout|sigma=0.2": {
+          "mean_error": 0.133,
+          "cep90": 0.2257
+        },
+        "random_layout|sigma=0.5": {
+          "mean_error": 0.3147,
+          "cep90": 0.5141
+        },
+        "random_layout|sigma=1.0": {
+          "mean_error": 0.8143,
+          "cep90": 1.3643
+        },
+        "two_outliers|sigma=0.2": {
+          "mean_error": 0.1583,
+          "cep90": 0.2212
+        },
+        "two_outliers|sigma=0.5": {
+          "mean_error": 0.3261,
+          "cep90": 0.4627
+        },
+        "two_outliers|sigma=1.0": {
+          "mean_error": 0.8645,
+          "cep90": 1.2997
+        },
+        "small_outlier|sigma=0.2": {
+          "mean_error": 0.3889,
+          "cep90": 0.4808
+        },
+        "small_outlier|sigma=0.5": {
+          "mean_error": 0.3856,
+          "cep90": 0.6202
+        },
+        "small_outlier|sigma=1.0": {
+          "mean_error": 0.8712,
+          "cep90": 1.3314
+        }
+      },
+      "round": 4
+    }
+  ],
+  "agent_summary": "# 四轮切换实验总结\n\n## 结果汇总\n\n| 轮次 | 规则（边界/方向） | macro_cep90 | mean_error | 固定选择率 | 对比基线 |\n|---|---|---|---|---|---|\n| 基线 | 不切换·fixed | 0.6749 | 0.4457 | — | — |\n| 基线 | 不切换·adaptive | **0.6279** | **0.4047** | — | — |\n| R1 | 1.5 / 低残差→fixed | 0.6891 | 0.4551 | 98.3% | 劣于两基线 |\n| R2 | 0.5 / 高残差→fixed | 0.6917 | 0.4287 | 42.5% | 劣于两基线 |\n| R3 | 0.2 / 高残差→fixed | 0.6739 | 0.4330 | 79.2% | 略优于fixed，劣于adaptive |\n| R4 | 0.1 / 高残差→fixed | 0.6749 | 0.4435 | 97.5% | 等于fixed，劣于adaptive |\n\n## 核心结论：切换没有带来真实改进\n\n**四轮切换规则全部未能超过自适应几何基线（macro_cep90 = 0.6279）。** 最好的 R3 仅达到 0.6739，仍比 adaptive 基线差约 7.3%，且只比 fixed 基线好 0.001（0.6739 vs 0.6749），属于噪声量级，不构成实质改进。\n\n更关键的是：**所有切换规则的 cep90 恒为 0.9687，与 fixed 基线完全相同**，说明切换从未改变最坏场景的尾部表现——切换只在均值层面做了微调，没有触及决定 macro_cep90 的瓶颈场景。\n\n## 失败场景分析\n\n从 per_case 数据看，瓶颈集中在三类高噪声/异常场景：\n\n- **random_layout|σ=1.0**：cep90 = 1.3643，所有规则均未改善。\n- **two_outliers|σ=1.0**：cep90 在 1.30–1.47 间波动，R1 反而恶化到 1.4698。\n- **small_outlier|σ=1.0**：cep90 在 1.33–1.69 间波动，R2 恶化到 1.693。\n\n规律很清楚：**在 σ=1.0 的高噪声场景，无论切向 fixed 还是 adaptive，尾部误差都居高不下**。切换规则基于残差 MAD 阈值，而高噪声下残差本身被噪声淹没，MAD 无法可靠区分\"几何退化\"与\"噪声放大\"，导致切换方向判断失效。R1 的 98.3% 固定选择率说明阈值 1.5 几乎从不触发切换，等价于 fixed 基线；R4 的 97.5% 同理，退化为 fixed。\n\n## 研究局限\n\n1. **切换维度单一**：只在 fixed/adaptive 两个几何方法间切换，而两者在高噪声尾部都失效，切换无法突破共同瓶颈。\n2. **MAD 阈值在高噪声下判别力不足**：残差统计量被噪声主导，切换信号与真实几何质量脱耦。\n3. **未触及尾部**：macro_cep90 由最差场景决定，而切换只优化了均值，未针对 σ=1.0 与异常场景设计专门策略。\n4. **边界敏感性**：0.1→0.2→0.5 的 macro_cep90 呈 0.6749→0.6739→0.6917 的非单调变化，说明改进幅度在噪声范围内，规则不稳定。\n\n## 下一轮建议方向（非本轮结论）\n\n若要真正改善 macro_cep90，需跳出\"fixed↔adaptive 二选一\"框架：例如引入对高噪声鲁棒的残差归一化（用尺度估计而非原始 MAD），或针对 σ=1.0 场景单独设计降权/鲁棒损失，而非仅调切换边界。当前证据表明，**单纯调整切换边界与方向无法改善跨场景定位性能**，这一点必须如实记录。",
+  "best_rule": {
+    "boundary": 0.2,
+    "direction": "high_fixed",
+    "mean_error": 0.433,
+    "cep90": 0.9687,
+    "macro_cep90": 0.6739,
+    "max_error": 1.7395,
+    "fixed_selection_rate": 0.7917,
+    "per_case": {
+      "standard|sigma=0.2": {
+        "mean_error": 0.1292,
+        "cep90": 0.2033
+      },
+      "standard|sigma=0.5": {
+        "mean_error": 0.3372,
+        "cep90": 0.4395
+      },
+      "standard|sigma=1.0": {
+        "mean_error": 0.6018,
+        "cep90": 0.9361
+      },
+      "random_layout|sigma=0.2": {
+        "mean_error": 0.133,
+        "cep90": 0.2257
+      },
+      "random_layout|sigma=0.5": {
+        "mean_error": 0.3147,
+        "cep90": 0.5141
+      },
+      "random_layout|sigma=1.0": {
+        "mean_error": 0.8143,
+        "cep90": 1.3643
+      },
+      "two_outliers|sigma=0.2": {
+        "mean_error": 0.1583,
+        "cep90": 0.2212
+      },
+      "two_outliers|sigma=0.5": {
+        "mean_error": 0.3261,
+        "cep90": 0.4627
+      },
+      "two_outliers|sigma=1.0": {
+        "mean_error": 0.8645,
+        "cep90": 1.2997
+      },
+      "small_outlier|sigma=0.2": {
+        "mean_error": 0.2601,
+        "cep90": 0.4692
+      },
+      "small_outlier|sigma=0.5": {
+        "mean_error": 0.3856,
+        "cep90": 0.6202
+      },
+      "small_outlier|sigma=1.0": {
+        "mean_error": 0.8712,
+        "cep90": 1.3314
+      }
+    },
+    "round": 3
+  },
+  "holdout_baselines": [
+    {
+      "method": "fixed",
+      "mean_error": 0.4308,
+      "macro_cep90": 0.6816,
+      "cep90": 0.8993
+    },
+    {
+      "method": "adaptive",
+      "mean_error": 0.4062,
+      "macro_cep90": 0.6332,
+      "cep90": 0.8834
+    }
+  ],
+  "holdout_switch": {
+    "boundary": 0.2,
+    "direction": "high_fixed",
+    "mean_error": 0.4139,
+    "cep90": 0.8993,
+    "macro_cep90": 0.6704,
+    "max_error": 2.2824,
+    "fixed_selection_rate": 0.8083,
+    "per_case": {
+      "standard|sigma=0.2": {
+        "mean_error": 0.1106,
+        "cep90": 0.1606
+      },
+      "standard|sigma=0.5": {
+        "mean_error": 0.294,
+        "cep90": 0.5145
+      },
+      "standard|sigma=1.0": {
+        "mean_error": 0.8677,
+        "cep90": 1.257
+      },
+      "random_layout|sigma=0.2": {
+        "mean_error": 0.0892,
+        "cep90": 0.1426
+      },
+      "random_layout|sigma=0.5": {
+        "mean_error": 0.3704,
+        "cep90": 0.6653
+      },
+      "random_layout|sigma=1.0": {
+        "mean_error": 0.5591,
+        "cep90": 1.0857
+      },
+      "two_outliers|sigma=0.2": {
+        "mean_error": 0.1557,
+        "cep90": 0.2644
+      },
+      "two_outliers|sigma=0.5": {
+        "mean_error": 0.3755,
+        "cep90": 0.5424
+      },
+      "two_outliers|sigma=1.0": {
+        "mean_error": 0.7342,
+        "cep90": 0.9531
+      },
+      "small_outlier|sigma=0.2": {
+        "mean_error": 0.2041,
+        "cep90": 0.3596
+      },
+      "small_outlier|sigma=0.5": {
+        "mean_error": 0.3684,
+        "cep90": 0.517
+      },
+      "small_outlier|sigma=1.0": {
+        "mean_error": 0.838,
+        "cep90": 1.5825
+      }
+    }
+  }
+}

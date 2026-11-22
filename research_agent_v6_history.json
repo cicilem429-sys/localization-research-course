@@ -1,0 +1,783 @@
+{
+  "version": "V6",
+  "model": "deepseek-v4-pro",
+  "round_limit": 16,
+  "development_seed": 2063,
+  "holdout_seed": 9063,
+  "experiments": [
+    {
+      "round": 1,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 20,
+        "gamma": 1.0,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第一轮建立基准。假设：多候选几何一致性支持度能有效区分可信节点与异常节点。支持度越高的节点权重越高（gamma=1线性映射），用top_k=20个候选通过softmax加权来平滑定位。中等阈值0.8允许适度容错，min_weight=0.1防止权重过低导致信息丢失。",
+      "metrics": {
+        "mean_error": 0.4338,
+        "cep90": 0.9646,
+        "macro_cep90": 0.6506,
+        "max_error": 2.9387,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1674,
+          "standard|sigma=0.5": 0.6453,
+          "standard|sigma=1.0": 0.9655,
+          "random_layout|sigma=0.2": 0.1615,
+          "random_layout|sigma=0.5": 0.4938,
+          "random_layout|sigma=1.0": 1.1785,
+          "two_outliers|sigma=0.2": 0.2277,
+          "two_outliers|sigma=0.5": 0.6591,
+          "two_outliers|sigma=1.0": 1.1869,
+          "small_outlier|sigma=0.2": 0.2344,
+          "small_outlier|sigma=0.5": 0.6071,
+          "small_outlier|sigma=1.0": 1.2797
+        },
+        "average_weight": 0.777,
+        "average_support": 0.7522
+      }
+    },
+    {
+      "round": 2,
+      "proposal": {
+        "threshold": 0.6,
+        "top_k": 20,
+        "gamma": 2.0,
+        "min_weight": 0.05,
+        "delta": 0.8,
+        "temperature": 1.0
+      },
+      "hypothesis": "第一轮macro_cep90=0.6506，低于v5(0.5924)，仅略优于adaptive。分析：平均支持度0.75偏高，说明支持度区分度不足，多数节点都被认为\"一致\"。gamma=1线性映射太过温和。本轮提高gamma=2放大高支持度与低支持度的差距，强化对异常节点的压制；同时增大Huber delta=0.8减轻残差对定位的过度惩罚，使内点更稳定。",
+      "metrics": {
+        "mean_error": 0.4319,
+        "cep90": 0.9411,
+        "macro_cep90": 0.6833,
+        "max_error": 3.0976,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1659,
+          "standard|sigma=0.5": 0.7276,
+          "standard|sigma=1.0": 1.0067,
+          "random_layout|sigma=0.2": 0.1795,
+          "random_layout|sigma=0.5": 0.5455,
+          "random_layout|sigma=1.0": 1.3244,
+          "two_outliers|sigma=0.2": 0.2284,
+          "two_outliers|sigma=0.5": 0.7015,
+          "two_outliers|sigma=1.0": 1.2583,
+          "small_outlier|sigma=0.2": 0.2349,
+          "small_outlier|sigma=0.5": 0.6183,
+          "small_outlier|sigma=1.0": 1.2085
+        },
+        "average_weight": 0.6507,
+        "average_support": 0.6957
+      }
+    },
+    {
+      "round": 3,
+      "proposal": {
+        "threshold": 0.6,
+        "top_k": 8,
+        "gamma": 1.0,
+        "min_weight": 0.05,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第二轮gamma=2导致macro_cep90恶化到0.6833。平均权重降到0.65但误差反而上升，说明过强权重重分配伤害了正常节点的定位（可能高支持度节点不够多，或支持度估计本身有噪声）。反转假设：温和线性映射更稳健。本轮回到gamma=1，并减小top_k测试候选数量是否影响——假设使用更少高质量候选（top_k从20减到8）可以剔除尾部噪声候选。",
+      "metrics": {
+        "mean_error": 0.4544,
+        "cep90": 1.0353,
+        "macro_cep90": 0.7143,
+        "max_error": 3.0165,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1636,
+          "standard|sigma=0.5": 0.7194,
+          "standard|sigma=1.0": 1.0567,
+          "random_layout|sigma=0.2": 0.1634,
+          "random_layout|sigma=0.5": 0.5522,
+          "random_layout|sigma=1.0": 1.2799,
+          "two_outliers|sigma=0.2": 0.2293,
+          "two_outliers|sigma=0.5": 0.8709,
+          "two_outliers|sigma=1.0": 1.4408,
+          "small_outlier|sigma=0.2": 0.2356,
+          "small_outlier|sigma=0.5": 0.6165,
+          "small_outlier|sigma=1.0": 1.2427
+        },
+        "average_weight": 0.7387,
+        "average_support": 0.725
+      }
+    },
+    {
+      "round": 4,
+      "proposal": {
+        "threshold": 0.6,
+        "top_k": 20,
+        "gamma": 1.0,
+        "min_weight": 0.05,
+        "delta": 0.5,
+        "temperature": 0.5
+      },
+      "hypothesis": "第三轮top_k=8恶化到0.7143，误差均值明显上升。说明减少候选损失了有用信息，top_k=20比8好（0.6506 vs 0.7143）。假设：候选数量需要足够大以平均掉三节点方程的单侧噪声，但温度控制候选间的权重分配。本轮回到top_k=20，探索更小temperature=0.5使softmax更尖锐，赋予高一致性候选更大话语权，同时保持候选池充足。",
+      "metrics": {
+        "mean_error": 0.4432,
+        "cep90": 1.0104,
+        "macro_cep90": 0.708,
+        "max_error": 3.0157,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1636,
+          "standard|sigma=0.5": 0.7058,
+          "standard|sigma=1.0": 1.0386,
+          "random_layout|sigma=0.2": 0.1664,
+          "random_layout|sigma=0.5": 0.5382,
+          "random_layout|sigma=1.0": 1.3853,
+          "two_outliers|sigma=0.2": 0.2293,
+          "two_outliers|sigma=0.5": 0.8043,
+          "two_outliers|sigma=1.0": 1.3637,
+          "small_outlier|sigma=0.2": 0.2356,
+          "small_outlier|sigma=0.5": 0.6211,
+          "small_outlier|sigma=1.0": 1.244
+        },
+        "average_weight": 0.7325,
+        "average_support": 0.7184
+      }
+    },
+    {
+      "round": 5,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 20,
+        "gamma": 1.0,
+        "min_weight": 0.02,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第四轮temperature=0.5使softmax尖锐化，反而变差(0.708)。说明候选质量估计有噪声，尖锐softmax放大了对单候选的过度信任（winner-take-all效应）。回到temperature=1.0。现在的核心变量是threshold和min_weight。第一轮参数(threshold=0.8,min_weight=0.1)给出0.6506最好。假设min_weight=0.1的作用是给低支持度节点保留信息，min_weight过大(0.1)实际接近纯Huber。本轮测试更小min_weight=0.02配合threshold=0.8，看是否更激进地压制异常而不伤内点。",
+      "metrics": {
+        "mean_error": 0.4402,
+        "cep90": 0.9807,
+        "macro_cep90": 0.6634,
+        "max_error": 2.9694,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1615,
+          "standard|sigma=0.5": 0.6405,
+          "standard|sigma=1.0": 0.9639,
+          "random_layout|sigma=0.2": 0.1647,
+          "random_layout|sigma=0.5": 0.4912,
+          "random_layout|sigma=1.0": 1.2738,
+          "two_outliers|sigma=0.2": 0.2303,
+          "two_outliers|sigma=0.5": 0.6667,
+          "two_outliers|sigma=1.0": 1.2172,
+          "small_outlier|sigma=0.2": 0.2363,
+          "small_outlier|sigma=0.5": 0.628,
+          "small_outlier|sigma=1.0": 1.2866
+        },
+        "average_weight": 0.7572,
+        "average_support": 0.7522
+      }
+    },
+    {
+      "round": 6,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 40,
+        "gamma": 1.0,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第五轮min_weight=0.02得0.6634，不如第一轮min_weight=0.1的0.6506。说明过低的min_weight让低支持度节点权重过小，丢失约束。第一轮(min_weight=0.1,threshold=0.8)仍最好。现在固定这些，探索top_k增大。假设top_k=20不够覆盖，增加到top_k=40可增加候选多样性，让softmax在更多候选中平摊权重，减少单候选噪声影响。",
+      "metrics": {
+        "mean_error": 0.4249,
+        "cep90": 0.903,
+        "macro_cep90": 0.6287,
+        "max_error": 2.9336,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1674,
+          "standard|sigma=0.5": 0.6547,
+          "standard|sigma=1.0": 0.9867,
+          "random_layout|sigma=0.2": 0.1618,
+          "random_layout|sigma=0.5": 0.5112,
+          "random_layout|sigma=1.0": 1.0784,
+          "two_outliers|sigma=0.2": 0.2277,
+          "two_outliers|sigma=0.5": 0.6432,
+          "two_outliers|sigma=1.0": 1.1075,
+          "small_outlier|sigma=0.2": 0.2344,
+          "small_outlier|sigma=0.5": 0.6081,
+          "small_outlier|sigma=1.0": 1.1627
+        },
+        "average_weight": 0.7543,
+        "average_support": 0.727
+      }
+    },
+    {
+      "round": 7,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 80,
+        "gamma": 1.0,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第六轮top_k=40显著改善到0.6287（超过第一轮0.6506，仍弱于v5=0.5924）。候选多样性确实重要。继续增大top_k=80，假设更多候选进一步平滑单侧噪声，且softmax温度1.0下高一致性候选仍占主导，不会引入太多噪声。",
+      "metrics": {
+        "mean_error": 0.4255,
+        "cep90": 0.9009,
+        "macro_cep90": 0.6265,
+        "max_error": 2.9257,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1673,
+          "standard|sigma=0.5": 0.6486,
+          "standard|sigma=1.0": 1.0022,
+          "random_layout|sigma=0.2": 0.1676,
+          "random_layout|sigma=0.5": 0.5121,
+          "random_layout|sigma=1.0": 1.0475,
+          "two_outliers|sigma=0.2": 0.2275,
+          "two_outliers|sigma=0.5": 0.6377,
+          "two_outliers|sigma=1.0": 1.0884,
+          "small_outlier|sigma=0.2": 0.2345,
+          "small_outlier|sigma=0.5": 0.5811,
+          "small_outlier|sigma=1.0": 1.204
+        },
+        "average_weight": 0.7281,
+        "average_support": 0.6979
+      }
+    },
+    {
+      "round": 8,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 120,
+        "gamma": 1.0,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第七轮top_k=80得0.6265，略优于top_k=40的0.6287，但提升趋缓。继续增大top_k=120观察是否饱和。同时假设：支持度均值随top_k增大而下降（0.727→0.698），说明更多候选稀释了平均支持度，这或许压制了异常。若饱和则转回调整gamma/threshold围绕top_k=80附近。",
+      "metrics": {
+        "mean_error": 0.425,
+        "cep90": 0.8992,
+        "macro_cep90": 0.6245,
+        "max_error": 2.9222,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1673,
+          "standard|sigma=0.5": 0.6481,
+          "standard|sigma=1.0": 1.0009,
+          "random_layout|sigma=0.2": 0.1676,
+          "random_layout|sigma=0.5": 0.5121,
+          "random_layout|sigma=1.0": 1.0431,
+          "two_outliers|sigma=0.2": 0.2275,
+          "two_outliers|sigma=0.5": 0.638,
+          "two_outliers|sigma=1.0": 1.08,
+          "small_outlier|sigma=0.2": 0.2345,
+          "small_outlier|sigma=0.5": 0.5796,
+          "small_outlier|sigma=1.0": 1.1946
+        },
+        "average_weight": 0.7192,
+        "average_support": 0.688
+      }
+    },
+    {
+      "round": 9,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 120,
+        "gamma": 1.5,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第八轮top_k=120得0.6245，继续缓慢改善。top_k收到边际收益递减。现在维持top_k=120，调整gamma。第一轮gamma=2配合top_k=20时差，但那是小候选池。假设：在大候选池(top_k=120)下，支持度更可靠，适度增大gamma=1.5可以更有效压制真实异常节点，同时不会因候选不足而伤害内点。min_weight=0.1提供下界保护。",
+      "metrics": {
+        "mean_error": 0.4284,
+        "cep90": 0.9639,
+        "macro_cep90": 0.64,
+        "max_error": 3.0277,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1673,
+          "standard|sigma=0.5": 0.653,
+          "standard|sigma=1.0": 1.006,
+          "random_layout|sigma=0.2": 0.1708,
+          "random_layout|sigma=0.5": 0.5163,
+          "random_layout|sigma=1.0": 1.1683,
+          "two_outliers|sigma=0.2": 0.2273,
+          "two_outliers|sigma=0.5": 0.649,
+          "two_outliers|sigma=1.0": 1.1176,
+          "small_outlier|sigma=0.2": 0.2345,
+          "small_outlier|sigma=0.5": 0.582,
+          "small_outlier|sigma=1.0": 1.188
+        },
+        "average_weight": 0.6751,
+        "average_support": 0.688
+      }
+    },
+    {
+      "round": 10,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 120,
+        "gamma": 0.7,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第九轮gamma=1.5得0.64，比gamma=1(0.6245)差。说明gamma=1已接近最优，甚至更小的gamma可能更好。假设：非线性压缩（gamma<1）降低对支持度估计噪声的敏感度，使权重更接近均匀，从而更稳健。测试gamma=0.7，保持top_k=120。",
+      "metrics": {
+        "mean_error": 0.4216,
+        "cep90": 0.9003,
+        "macro_cep90": 0.6167,
+        "max_error": 2.8288,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1673,
+          "standard|sigma=0.5": 0.6381,
+          "standard|sigma=1.0": 0.9933,
+          "random_layout|sigma=0.2": 0.1657,
+          "random_layout|sigma=0.5": 0.5082,
+          "random_layout|sigma=1.0": 1.0027,
+          "two_outliers|sigma=0.2": 0.2275,
+          "two_outliers|sigma=0.5": 0.6245,
+          "two_outliers|sigma=1.0": 1.0629,
+          "small_outlier|sigma=0.2": 0.2345,
+          "small_outlier|sigma=0.5": 0.567,
+          "small_outlier|sigma=1.0": 1.2088
+        },
+        "average_weight": 0.7551,
+        "average_support": 0.688
+      }
+    },
+    {
+      "round": 11,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 120,
+        "gamma": 0.5,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十轮gamma=0.7降到0.6167（首次低于0.62）。非线性压缩确实稳健，进一步减小gamma应更接近均匀但保留一定区分。测试gamma=0.5。假设支持度主要提供方向信息而非精确幅度，开方压缩降低噪声方差，同时min_weight=0.1保住下界。",
+      "metrics": {
+        "mean_error": 0.4171,
+        "cep90": 0.8925,
+        "macro_cep90": 0.6106,
+        "max_error": 2.7578,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1673,
+          "standard|sigma=0.5": 0.625,
+          "standard|sigma=1.0": 0.9821,
+          "random_layout|sigma=0.2": 0.1642,
+          "random_layout|sigma=0.5": 0.5048,
+          "random_layout|sigma=1.0": 0.9737,
+          "two_outliers|sigma=0.2": 0.2273,
+          "two_outliers|sigma=0.5": 0.612,
+          "two_outliers|sigma=1.0": 1.0673,
+          "small_outlier|sigma=0.2": 0.2347,
+          "small_outlier|sigma=0.5": 0.5454,
+          "small_outlier|sigma=1.0": 1.2229
+        },
+        "average_weight": 0.7866,
+        "average_support": 0.688
+      }
+    },
+    {
+      "round": 12,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 120,
+        "gamma": 0.35,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十一轮gamma=0.5得0.6106，继续改善。gamma<1压缩稳健性强。测试gamma=0.35（接近0.3下限）。假设进一步向均匀权重靠拢，但仍保留支撑度提供的软区分。平均权重已升到0.7866，说明gamma压缩让权重普遍抬高，min_weight=0.1的作用减弱。",
+      "metrics": {
+        "mean_error": 0.4134,
+        "cep90": 0.8752,
+        "macro_cep90": 0.6041,
+        "max_error": 2.7089,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1674,
+          "standard|sigma=0.5": 0.6099,
+          "standard|sigma=1.0": 0.9664,
+          "random_layout|sigma=0.2": 0.1629,
+          "random_layout|sigma=0.5": 0.502,
+          "random_layout|sigma=1.0": 0.9458,
+          "two_outliers|sigma=0.2": 0.2313,
+          "two_outliers|sigma=0.5": 0.6015,
+          "two_outliers|sigma=1.0": 1.0799,
+          "small_outlier|sigma=0.2": 0.2352,
+          "small_outlier|sigma=0.5": 0.5115,
+          "small_outlier|sigma=1.0": 1.2357
+        },
+        "average_weight": 0.8174,
+        "average_support": 0.688
+      }
+    },
+    {
+      "round": 13,
+      "proposal": {
+        "threshold": 0.8,
+        "top_k": 120,
+        "gamma": 0.3,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十二轮gamma=0.35得0.6041，持续改善但提幅缩小（0.6106→0.6041）。测试gamma=0.3下限。假设趋向均匀权重时误差继续下降，可能收敛到接近\"纯平均候选\"的性能，但支持度仍贡献微小但正面的区分。",
+      "metrics": {
+        "mean_error": 0.4115,
+        "cep90": 0.8612,
+        "macro_cep90": 0.6033,
+        "max_error": 2.6959,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1674,
+          "standard|sigma=0.5": 0.6084,
+          "standard|sigma=1.0": 0.9589,
+          "random_layout|sigma=0.2": 0.1623,
+          "random_layout|sigma=0.5": 0.5011,
+          "random_layout|sigma=1.0": 0.9344,
+          "two_outliers|sigma=0.2": 0.2398,
+          "two_outliers|sigma=0.5": 0.5981,
+          "two_outliers|sigma=1.0": 1.0868,
+          "small_outlier|sigma=0.2": 0.2355,
+          "small_outlier|sigma=0.5": 0.5063,
+          "small_outlier|sigma=1.0": 1.2403
+        },
+        "average_weight": 0.8298,
+        "average_support": 0.688
+      }
+    },
+    {
+      "round": 14,
+      "proposal": {
+        "threshold": 0.5,
+        "top_k": 120,
+        "gamma": 0.3,
+        "min_weight": 0.1,
+        "delta": 0.7,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十三轮gamma=0.3得0.6033，已接近gamma=0.35(0.6041)。gamma方向收敛。现在固定gamma=0.3,top_k=120，调整threshold。当前threshold=0.8。假设：支持度计算本身依赖threshold（残差<threshold算支持），调整threshold改变支持度的分辨率。更大threshold=1.2会更宽厚地认定\"一致\"，压缩后(support^0.3)几乎无区分；更小threshold=0.5则更严格。结合gamma=0.3的强压缩，需要更严格threshold来保留区分度。先测threshold=0.5。",
+      "metrics": {
+        "mean_error": 0.4124,
+        "cep90": 0.8645,
+        "macro_cep90": 0.6002,
+        "max_error": 2.5083,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1705,
+          "standard|sigma=0.5": 0.6301,
+          "standard|sigma=1.0": 0.8837,
+          "random_layout|sigma=0.2": 0.1658,
+          "random_layout|sigma=0.5": 0.5177,
+          "random_layout|sigma=1.0": 0.9469,
+          "two_outliers|sigma=0.2": 0.2631,
+          "two_outliers|sigma=0.5": 0.633,
+          "two_outliers|sigma=1.0": 1.1132,
+          "small_outlier|sigma=0.2": 0.2353,
+          "small_outlier|sigma=0.5": 0.5008,
+          "small_outlier|sigma=1.0": 1.1429
+        },
+        "average_weight": 0.7757,
+        "average_support": 0.5736
+      }
+    },
+    {
+      "round": 15,
+      "proposal": {
+        "threshold": 0.35,
+        "top_k": 120,
+        "gamma": 0.3,
+        "min_weight": 0.1,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十四轮threshold=0.5得0.6002，略优于threshold=0.8(0.6033)。更严格threshold提升区分度。继续测试threshold=0.35。假设更小的阈值仅把真正高度一致的节点算作支持，去除中等弱一致性的干扰，使support^0.3的区分更干净，进一步压制异常。",
+      "metrics": {
+        "mean_error": 0.4274,
+        "cep90": 0.913,
+        "macro_cep90": 0.6365,
+        "max_error": 2.6032,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1675,
+          "standard|sigma=0.5": 0.6691,
+          "standard|sigma=1.0": 0.9755,
+          "random_layout|sigma=0.2": 0.1758,
+          "random_layout|sigma=0.5": 0.5535,
+          "random_layout|sigma=1.0": 0.9516,
+          "two_outliers|sigma=0.2": 0.2277,
+          "two_outliers|sigma=0.5": 0.7345,
+          "two_outliers|sigma=1.0": 1.2461,
+          "small_outlier|sigma=0.2": 0.235,
+          "small_outlier|sigma=0.5": 0.5187,
+          "small_outlier|sigma=1.0": 1.1833
+        },
+        "average_weight": 0.7252,
+        "average_support": 0.478
+      }
+    },
+    {
+      "round": 16,
+      "proposal": {
+        "threshold": 0.5,
+        "top_k": 120,
+        "gamma": 0.3,
+        "min_weight": 0.15,
+        "delta": 0.5,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十五轮threshold=0.35过严，得0.6365，恶化。支持度均值降到0.478，说明过多正常节点被错误标记为低支持，gamma压缩后权重差异乱套。最优threshold在0.5附近。现在threshold=0.5,gamma=0.3，微调min_weight。此前min_weight=0.1未变。假设提高min_weight=0.15可进一步压缩权重动态范围，因为gamma=0.3下权重已很高(0.7757)，min_weight抬高使异常与内点权重差异更小，进一步稳健。",
+      "metrics": {
+        "mean_error": 0.4276,
+        "cep90": 0.8631,
+        "macro_cep90": 0.6273,
+        "max_error": 2.7046,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1713,
+          "standard|sigma=0.5": 0.6455,
+          "standard|sigma=1.0": 0.9702,
+          "random_layout|sigma=0.2": 0.1654,
+          "random_layout|sigma=0.5": 0.5122,
+          "random_layout|sigma=1.0": 1.0318,
+          "two_outliers|sigma=0.2": 0.2528,
+          "two_outliers|sigma=0.5": 0.7143,
+          "two_outliers|sigma=1.0": 1.1194,
+          "small_outlier|sigma=0.2": 0.2345,
+          "small_outlier|sigma=0.5": 0.5245,
+          "small_outlier|sigma=1.0": 1.1861
+        },
+        "average_weight": 0.7882,
+        "average_support": 0.5736
+      }
+    }
+  ],
+  "api": {
+    "request_count": 16,
+    "input_tokens": 74692,
+    "output_tokens": 3890,
+    "estimated_v6_cost_cny": 0.854984,
+    "previous_spend_cny": 0.479
+  },
+  "development_baselines": {
+    "huber": {
+      "mean_error": 0.499,
+      "cep90": 0.8571,
+      "macro_cep90": 0.7521,
+      "max_error": 2.3412,
+      "per_case_cep90": {
+        "standard|sigma=0.2": 0.3703,
+        "standard|sigma=0.5": 0.7026,
+        "standard|sigma=1.0": 0.771,
+        "random_layout|sigma=0.2": 0.396,
+        "random_layout|sigma=0.5": 0.5966,
+        "random_layout|sigma=1.0": 1.0888,
+        "two_outliers|sigma=0.2": 0.733,
+        "two_outliers|sigma=0.5": 0.8681,
+        "two_outliers|sigma=1.0": 1.3085,
+        "small_outlier|sigma=0.2": 0.3864,
+        "small_outlier|sigma=0.5": 0.615,
+        "small_outlier|sigma=1.0": 1.1889
+      }
+    },
+    "fixed": {
+      "mean_error": 0.4109,
+      "cep90": 0.8546,
+      "macro_cep90": 0.6205,
+      "max_error": 1.6911,
+      "per_case_cep90": {
+        "standard|sigma=0.2": 0.1601,
+        "standard|sigma=0.5": 0.5302,
+        "standard|sigma=1.0": 0.6829,
+        "random_layout|sigma=0.2": 0.1657,
+        "random_layout|sigma=0.5": 0.4962,
+        "random_layout|sigma=1.0": 1.1151,
+        "two_outliers|sigma=0.2": 0.231,
+        "two_outliers|sigma=0.5": 0.491,
+        "two_outliers|sigma=1.0": 1.0393,
+        "small_outlier|sigma=0.2": 0.5411,
+        "small_outlier|sigma=0.5": 0.6952,
+        "small_outlier|sigma=1.0": 1.2983
+      }
+    },
+    "adaptive": {
+      "mean_error": 0.4233,
+      "cep90": 0.9586,
+      "macro_cep90": 0.6466,
+      "max_error": 2.986,
+      "per_case_cep90": {
+        "standard|sigma=0.2": 0.1601,
+        "standard|sigma=0.5": 0.5998,
+        "standard|sigma=1.0": 1.1561,
+        "random_layout|sigma=0.2": 0.1657,
+        "random_layout|sigma=0.5": 0.5192,
+        "random_layout|sigma=1.0": 1.2172,
+        "two_outliers|sigma=0.2": 0.231,
+        "two_outliers|sigma=0.5": 0.491,
+        "two_outliers|sigma=1.0": 1.0778,
+        "small_outlier|sigma=0.2": 0.2369,
+        "small_outlier|sigma=0.5": 0.6063,
+        "small_outlier|sigma=1.0": 1.2983
+      }
+    },
+    "v5": {
+      "mean_error": 0.3905,
+      "cep90": 0.7355,
+      "macro_cep90": 0.5924,
+      "max_error": 1.825,
+      "per_case_cep90": {
+        "standard|sigma=0.2": 0.1804,
+        "standard|sigma=0.5": 0.549,
+        "standard|sigma=1.0": 0.7013,
+        "random_layout|sigma=0.2": 0.1584,
+        "random_layout|sigma=0.5": 0.4835,
+        "random_layout|sigma=1.0": 1.0672,
+        "two_outliers|sigma=0.2": 0.2586,
+        "two_outliers|sigma=0.5": 0.5025,
+        "two_outliers|sigma=1.0": 1.046,
+        "small_outlier|sigma=0.2": 0.3684,
+        "small_outlier|sigma=0.5": 0.596,
+        "small_outlier|sigma=1.0": 1.1969
+      }
+    }
+  },
+  "final": {
+    "best_candidate": {
+      "round": 14,
+      "proposal": {
+        "threshold": 0.5,
+        "top_k": 120,
+        "gamma": 0.3,
+        "min_weight": 0.1,
+        "delta": 0.7,
+        "temperature": 1.0
+      },
+      "hypothesis": "第十三轮gamma=0.3得0.6033，已接近gamma=0.35(0.6041)。gamma方向收敛。现在固定gamma=0.3,top_k=120，调整threshold。当前threshold=0.8。假设：支持度计算本身依赖threshold（残差<threshold算支持），调整threshold改变支持度的分辨率。更大threshold=1.2会更宽厚地认定\"一致\"，压缩后(support^0.3)几乎无区分；更小threshold=0.5则更严格。结合gamma=0.3的强压缩，需要更严格threshold来保留区分度。先测threshold=0.5。",
+      "metrics": {
+        "mean_error": 0.4124,
+        "cep90": 0.8645,
+        "macro_cep90": 0.6002,
+        "max_error": 2.5083,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1705,
+          "standard|sigma=0.5": 0.6301,
+          "standard|sigma=1.0": 0.8837,
+          "random_layout|sigma=0.2": 0.1658,
+          "random_layout|sigma=0.5": 0.5177,
+          "random_layout|sigma=1.0": 0.9469,
+          "two_outliers|sigma=0.2": 0.2631,
+          "two_outliers|sigma=0.5": 0.633,
+          "two_outliers|sigma=1.0": 1.1132,
+          "small_outlier|sigma=0.2": 0.2353,
+          "small_outlier|sigma=0.5": 0.5008,
+          "small_outlier|sigma=1.0": 1.1429
+        },
+        "average_weight": 0.7757,
+        "average_support": 0.5736
+      }
+    },
+    "test_baselines": {
+      "huber": {
+        "mean_error": 0.4773,
+        "cep90": 0.8875,
+        "macro_cep90": 0.8044,
+        "max_error": 1.7586,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.3905,
+          "standard|sigma=0.5": 0.7099,
+          "standard|sigma=1.0": 1.2828,
+          "random_layout|sigma=0.2": 0.4372,
+          "random_layout|sigma=0.5": 0.729,
+          "random_layout|sigma=1.0": 0.9757,
+          "two_outliers|sigma=0.2": 0.6951,
+          "two_outliers|sigma=0.5": 1.0057,
+          "two_outliers|sigma=1.0": 1.4776,
+          "small_outlier|sigma=0.2": 0.3742,
+          "small_outlier|sigma=0.5": 0.5432,
+          "small_outlier|sigma=1.0": 1.0316
+        }
+      },
+      "fixed": {
+        "mean_error": 0.4005,
+        "cep90": 0.8345,
+        "macro_cep90": 0.6473,
+        "max_error": 2.4738,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1824,
+          "standard|sigma=0.5": 0.5212,
+          "standard|sigma=1.0": 1.3089,
+          "random_layout|sigma=0.2": 0.2074,
+          "random_layout|sigma=0.5": 0.451,
+          "random_layout|sigma=1.0": 1.0755,
+          "two_outliers|sigma=0.2": 0.2197,
+          "two_outliers|sigma=0.5": 0.5534,
+          "two_outliers|sigma=1.0": 1.0543,
+          "small_outlier|sigma=0.2": 0.4958,
+          "small_outlier|sigma=0.5": 0.5917,
+          "small_outlier|sigma=1.0": 1.1063
+        }
+      },
+      "adaptive": {
+        "mean_error": 0.3967,
+        "cep90": 0.8782,
+        "macro_cep90": 0.6727,
+        "max_error": 3.1841,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1824,
+          "standard|sigma=0.5": 0.5606,
+          "standard|sigma=1.0": 1.3097,
+          "random_layout|sigma=0.2": 0.2074,
+          "random_layout|sigma=0.5": 0.5158,
+          "random_layout|sigma=1.0": 1.094,
+          "two_outliers|sigma=0.2": 0.2197,
+          "two_outliers|sigma=0.5": 0.5534,
+          "two_outliers|sigma=1.0": 1.3691,
+          "small_outlier|sigma=0.2": 0.2337,
+          "small_outlier|sigma=0.5": 0.5917,
+          "small_outlier|sigma=1.0": 1.2347
+        }
+      },
+      "v5": {
+        "mean_error": 0.3739,
+        "cep90": 0.7795,
+        "macro_cep90": 0.6145,
+        "max_error": 1.9638,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.2085,
+          "standard|sigma=0.5": 0.52,
+          "standard|sigma=1.0": 1.1704,
+          "random_layout|sigma=0.2": 0.2203,
+          "random_layout|sigma=0.5": 0.4413,
+          "random_layout|sigma=1.0": 0.9611,
+          "two_outliers|sigma=0.2": 0.251,
+          "two_outliers|sigma=0.5": 0.558,
+          "two_outliers|sigma=1.0": 1.0713,
+          "small_outlier|sigma=0.2": 0.3585,
+          "small_outlier|sigma=0.5": 0.5388,
+          "small_outlier|sigma=1.0": 1.0746
+        }
+      }
+    },
+    "test_candidate": {
+      "mean_error": 0.3942,
+      "cep90": 0.9107,
+      "macro_cep90": 0.627,
+      "max_error": 1.7856,
+      "per_case_cep90": {
+        "standard|sigma=0.2": 0.1963,
+        "standard|sigma=0.5": 0.5408,
+        "standard|sigma=1.0": 1.128,
+        "random_layout|sigma=0.2": 0.2249,
+        "random_layout|sigma=0.5": 0.4474,
+        "random_layout|sigma=1.0": 0.9254,
+        "two_outliers|sigma=0.2": 0.2628,
+        "two_outliers|sigma=0.5": 0.6622,
+        "two_outliers|sigma=1.0": 1.1856,
+        "small_outlier|sigma=0.2": 0.2247,
+        "small_outlier|sigma=0.5": 0.541,
+        "small_outlier|sigma=1.0": 1.1851
+      },
+      "average_weight": 0.7739,
+      "average_support": 0.5683
+    },
+    "difference": -0.0125
+  }
+}

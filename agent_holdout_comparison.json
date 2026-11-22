@@ -1,0 +1,26 @@
+[
+  {
+    "method": "Huber",
+    "parameter": 1.0,
+    "mean_error": 0.4746,
+    "cep90": 0.9033,
+    "macro_cep90": 0.7258,
+    "detection_rate": null
+  },
+  {
+    "method": "FixedGeometry",
+    "parameter": 3.0,
+    "mean_error": 0.5658,
+    "cep90": 1.002,
+    "macro_cep90": 1.0086,
+    "detection_rate": 0.575
+  },
+  {
+    "method": "AdaptiveGeometry",
+    "parameter": 2.0,
+    "mean_error": 0.3849,
+    "cep90": 0.8825,
+    "macro_cep90": 0.6259,
+    "detection_rate": 0.825
+  }
+]

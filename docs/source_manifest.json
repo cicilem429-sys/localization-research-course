@@ -1,0 +1,362 @@
+[
+  {
+    "file": "adaptive_localization.py",
+    "sha256": "0751263b2d8650d5bcc69a9483d336fb4d0531db34d73338260b1c409acd1cee",
+    "bytes": 1186,
+    "source": "Desktop/my-math-agent/adaptive_localization.py"
+  },
+  {
+    "file": "adaptive_ten_anchor.py",
+    "sha256": "bfb9ef800e5ae05c3e5349547798d30a1a027f01d4d9ca6356a11fda48ca959e",
+    "bytes": 1557,
+    "source": "Desktop/my-math-agent/adaptive_ten_anchor.py"
+  },
+  {
+    "file": "agent_holdout_comparison.json",
+    "sha256": "beeab862d2efb4606a4d0c165ed0b5d42f7bc7a4d181af46253d10ab30face82",
+    "bytes": 487,
+    "source": "Desktop/my-math-agent/agent_holdout_comparison.json"
+  },
+  {
+    "file": "analyze_strategy_complementarity.py",
+    "sha256": "86d7a6abad46324ce8ab075d9dcb5cef661e1d0d57a6795e743518ac77a66b96",
+    "bytes": 2527,
+    "source": "Desktop/my-math-agent/analyze_strategy_complementarity.py"
+  },
+  {
+    "file": "calibrate_noise.py",
+    "sha256": "11ede4b6444712207291efeee52dba47b4f3e59ba123b37339db7f24c590f95b",
+    "bytes": 1966,
+    "source": "Desktop/my-math-agent/calibrate_noise.py"
+  },
+  {
+    "file": "candidate_analysis.py",
+    "sha256": "2c767e19a621b67395ba434ab4d1555caf9af49cab6902876a6294f9793dd321",
+    "bytes": 1616,
+    "source": "Desktop/my-math-agent/candidate_analysis.py"
+  },
+  {
+    "file": "cluster_consistency.py",
+    "sha256": "f643e40822d889734cb6f713459563fd3e72328f38ce3b3f8874a3b9f120d6b1",
+    "bytes": 1587,
+    "source": "Desktop/my-math-agent/cluster_consistency.py"
+  },
+  {
+    "file": "compare_localization_methods.py",
+    "sha256": "fa2dd7aeb54dbd614a6c4db40584efb23101024424702899e0ae8a5d9df052df",
+    "bytes": 2307,
+    "source": "Desktop/my-math-agent/compare_localization_methods.py"
+  },
+  {
+    "file": "compare_methods.py",
+    "sha256": "6fe11ae9b2af0f4f16ce01918419c08375962b35f377f5983274bd44f9fc6877",
+    "bytes": 643,
+    "source": "Desktop/my-math-agent/compare_methods.py"
+  },
+  {
+    "file": "compare_v3_holdout.py",
+    "sha256": "c4b9353d39c75705f9e35f34d986af0e63c40679e32f66958691ece9a5f05f7a",
+    "bytes": 1578,
+    "source": "Desktop/my-math-agent/compare_v3_holdout.py"
+  },
+  {
+    "file": "fast_cluster.py",
+    "sha256": "f6db3d414d2b177760d8e09c112f517973f8c95d581058a7a6e67b1fe1a3ed05",
+    "bytes": 1942,
+    "source": "Desktop/my-math-agent/fast_cluster.py"
+  },
+  {
+    "file": "fast_geometry.py",
+    "sha256": "0e668cb1b4901903dca17301a70a72244f2bf6af47ab34698c27a7c89d58f421",
+    "bytes": 3500,
+    "source": "Desktop/my-math-agent/fast_geometry.py"
+  },
+  {
+    "file": "final_statistical_validation.py",
+    "sha256": "785fbddd116d3b0179a722285a845ad9700b51d9a8b2db0d04644811dfdb1a45",
+    "bytes": 6771,
+    "source": "Desktop/my-math-agent/final_statistical_validation.py"
+  },
+  {
+    "file": "final_validation_results.json",
+    "sha256": "739315023d9a6351418066164f6b0caca80f9d57837873abfea672946785eb58",
+    "bytes": 21621,
+    "source": "Desktop/my-math-agent/final_validation_results.json"
+  },
+  {
+    "file": "final_validation_summary.csv",
+    "sha256": "85b7b83a67a5534bb325ad8d7a063b01c15eb093e96024588026c20a5061f922",
+    "bytes": 200,
+    "source": "Desktop/my-math-agent/final_validation_summary.csv"
+  },
+  {
+    "file": "generalization_results.json",
+    "sha256": "0fdee550c167883f61a27b17af2875618feaa294f32f4d3d40f0e3286039a320",
+    "bytes": 5684,
+    "source": "Desktop/my-math-agent/generalization_results.json"
+  },
+  {
+    "file": "geometry_consistency.py",
+    "sha256": "014467ae831c06d4d4fd176154f72dad230d67c2cdd4376a0aed6e9e9d1360c8",
+    "bytes": 2946,
+    "source": "Desktop/my-math-agent/geometry_consistency.py"
+  },
+  {
+    "file": "hello_deepseek.py",
+    "sha256": "3c53f4eef978380fe8a18a86bc50ac8acab99af8a1c3844c86f396b7cba7af5d",
+    "bytes": 735,
+    "source": "Desktop/my-math-agent/hello_deepseek.py"
+  },
+  {
+    "file": "hybrid_localization.py",
+    "sha256": "b65874bcd0a16de32a0a39eec62a0d8f51b456e2947274f67ae866d3ac73367d",
+    "bytes": 1368,
+    "source": "Desktop/my-math-agent/hybrid_localization.py"
+  },
+  {
+    "file": "localization_agent.py",
+    "sha256": "1343d60a94be639d69bfdfb81b207bddb014ca8503c4f4b98d86e1d6db94fd7f",
+    "bytes": 4366,
+    "source": "Desktop/my-math-agent/localization_agent.py"
+  },
+  {
+    "file": "localization_agent_v2.py",
+    "sha256": "bfe33c8faa6bd0f48a07c54e59db2b5361537949ecafc4d458666d550c63b39b",
+    "bytes": 13290,
+    "source": "Desktop/my-math-agent/localization_agent_v2.py"
+  },
+  {
+    "file": "localization_agent_v2_history.json",
+    "sha256": "79dc04dca7dce985cd7624324fff2a67ff4b44ac5c6bf4acbdaf34b207c7c5ab",
+    "bytes": 6029,
+    "source": "Desktop/my-math-agent/localization_agent_v2_history.json"
+  },
+  {
+    "file": "localization_experiment.py",
+    "sha256": "753f981b43c77a10d462b14a6dfc0b6a20c56b9157e88cf0c45edcca8184e983",
+    "bytes": 1956,
+    "source": "Desktop/my-math-agent/localization_experiment.py"
+  },
+  {
+    "file": "localization_history.json",
+    "sha256": "180b8968fc438bb03e5f0bcfd5c797a066450bfeed708061c764266effda8098",
+    "bytes": 1353,
+    "source": "Desktop/my-math-agent/localization_history.json"
+  },
+  {
+    "file": "localization_tools.py",
+    "sha256": "e1c44c01ceb14719dcd59ac1f9d4ca210c3e7605e848c1888971c09b2ece831a",
+    "bytes": 3790,
+    "source": "Desktop/my-math-agent/localization_tools.py"
+  },
+  {
+    "file": "math_agent.py",
+    "sha256": "5d705a217638359434565c07fc510ce75b12ca96c274f7513341c6ad75047891",
+    "bytes": 2774,
+    "source": "Desktop/my-math-agent/math_agent.py"
+  },
+  {
+    "file": "math_tools.py",
+    "sha256": "40be9a6b74480556f5a542c4847350156d0ab7e1a51fdf84ef8734e02c883900",
+    "bytes": 3400,
+    "source": "Desktop/my-math-agent/math_tools.py"
+  },
+  {
+    "file": "noise_estimation.py",
+    "sha256": "1d34ccb9b4f64b2c3955971480c564613a72284f4d1b135b606afeb15684b67a",
+    "bytes": 1478,
+    "source": "Desktop/my-math-agent/noise_estimation.py"
+  },
+  {
+    "file": "noise_sensitivity.py",
+    "sha256": "7b6f1a1b2dddd7d03fe9fec064529af213fbadc79918b132613fc5ca9b1650d5",
+    "bytes": 2188,
+    "source": "Desktop/my-math-agent/noise_sensitivity.py"
+  },
+  {
+    "file": "research_agent.py",
+    "sha256": "409c9120ac8dca3c5f79bea0346b20f536246ad02ca873c215d00e4079d16177",
+    "bytes": 3927,
+    "source": "Desktop/my-math-agent/research_agent.py"
+  },
+  {
+    "file": "research_agent_v3.py",
+    "sha256": "8248fb3ba5834ee856cfec5230f9a13a98d62a845433e846eed3db1633269293",
+    "bytes": 9042,
+    "source": "Desktop/my-math-agent/research_agent_v3.py"
+  },
+  {
+    "file": "research_agent_v3_history.json",
+    "sha256": "b28b273e938effdcdce43ac585d768541517c64b74a526c33ed174e27d6604b6",
+    "bytes": 10762,
+    "source": "Desktop/my-math-agent/research_agent_v3_history.json"
+  },
+  {
+    "file": "research_agent_v4.py",
+    "sha256": "f499405d4e242b35be7990d1bdf0b36e80349be47401d02591c35ae9c402b8f2",
+    "bytes": 12493,
+    "source": "Desktop/my-math-agent/research_agent_v4.py"
+  },
+  {
+    "file": "research_agent_v4_history.json",
+    "sha256": "a74848150951ab86a84a75c740ed10b87d1c9b212c07549fdaf721a2fd5925cc",
+    "bytes": 12545,
+    "source": "Desktop/my-math-agent/research_agent_v4_history.json"
+  },
+  {
+    "file": "research_agent_v5.py",
+    "sha256": "ad17021c8e2e0a460c9312d251c3985b804b35d4da90b0b50f09a86a551b0388",
+    "bytes": 22766,
+    "source": "Desktop/my-math-agent/research_agent_v5.py"
+  },
+  {
+    "file": "research_agent_v5_history.json",
+    "sha256": "47cc9a88d614c5a1861a31fa471a19d90b8e01fc2bacaecff396185d1f364078",
+    "bytes": 21238,
+    "source": "Desktop/my-math-agent/research_agent_v5_history.json"
+  },
+  {
+    "file": "research_agent_v6.py",
+    "sha256": "2c6a8b83063d3ced903f2b21a485e41bcb0a967325f7ded6ed76b5fabdb62eb5",
+    "bytes": 25534,
+    "source": "Desktop/my-math-agent/research_agent_v6.py"
+  },
+  {
+    "file": "research_agent_v6_history.json",
+    "sha256": "3accb659bf14fbb5e8712696af73838ff881e87701503ea582c22553d0c93fa9",
+    "bytes": 29953,
+    "source": "Desktop/my-math-agent/research_agent_v6_history.json"
+  },
+  {
+    "file": "research_environment_v3.py",
+    "sha256": "7917cf7e403a69e38cd863839b24b0eff942a72c4fffd348e848bc6b33d183bd",
+    "bytes": 8385,
+    "source": "Desktop/my-math-agent/research_environment_v3.py"
+  },
+  {
+    "file": "ten_anchor_threshold.py",
+    "sha256": "9f31649639236c7178ea9da1974da3c93b8311dab56d328cb432c8a6944427e3",
+    "bytes": 2002,
+    "source": "Desktop/my-math-agent/ten_anchor_threshold.py"
+  },
+  {
+    "file": "test_adaptive.py",
+    "sha256": "c3da77830b1ea981c7d0cbdf34e289a53349d568f543ca2df23c305cb56d0d6e",
+    "bytes": 2259,
+    "source": "Desktop/my-math-agent/test_adaptive.py"
+  },
+  {
+    "file": "test_adaptive_ten_anchor.py",
+    "sha256": "e87ca5eb5f9a238537836c2d5e0dec6e97be65a7e4ad4d10816a0bb4a632fd62",
+    "bytes": 2901,
+    "source": "Desktop/my-math-agent/test_adaptive_ten_anchor.py"
+  },
+  {
+    "file": "test_candidate_analysis.py",
+    "sha256": "1f1ad32802ded5f55ad5a021ed1751af1d38863ce37751cf0d2f9280bda2065c",
+    "bytes": 1131,
+    "source": "Desktop/my-math-agent/test_candidate_analysis.py"
+  },
+  {
+    "file": "test_cluster_spread.py",
+    "sha256": "3197bd77ceb40fe45505fb374c8e6f49acd4c2a16af3336b7285a9847e4b0960",
+    "bytes": 1218,
+    "source": "Desktop/my-math-agent/test_cluster_spread.py"
+  },
+  {
+    "file": "test_fast_cluster.py",
+    "sha256": "469f93e97d091924713be71e677f96cbb623f394360004ccf5d1779776cc1174",
+    "bytes": 1372,
+    "source": "Desktop/my-math-agent/test_fast_cluster.py"
+  },
+  {
+    "file": "test_generalization.py",
+    "sha256": "c181d3983ee73e3a6cef26738cbc7b3c133df038fabd7062c6b9680466955d88",
+    "bytes": 5363,
+    "source": "Desktop/my-math-agent/test_generalization.py"
+  },
+  {
+    "file": "test_geometry.py",
+    "sha256": "5ee13904c911b42ded1ce181961ce1b80ed28ee7472abdf0a01558538bfcf2b6",
+    "bytes": 1003,
+    "source": "Desktop/my-math-agent/test_geometry.py"
+  },
+  {
+    "file": "test_geometry_noise.py",
+    "sha256": "b8c58b2214e6200bb069eba99cda78c15199111a1ec1176b08a2968a43c23cfa",
+    "bytes": 1188,
+    "source": "Desktop/my-math-agent/test_geometry_noise.py"
+  },
+  {
+    "file": "test_hybrid.py",
+    "sha256": "d3f2af18f621fbc9b07b7bd04a14dcc2b782d6a4fb7b8782e2240ad15e9f099f",
+    "bytes": 963,
+    "source": "Desktop/my-math-agent/test_hybrid.py"
+  },
+  {
+    "file": "test_localization.py",
+    "sha256": "76d314fd7b112845670a554bcbfcaf2030a553f4750024bc1d9bceaf8d079142",
+    "bytes": 1031,
+    "source": "Desktop/my-math-agent/test_localization.py"
+  },
+  {
+    "file": "test_noise_estimation.py",
+    "sha256": "96935fdf6bb5babdc5c97c713153e9eb9c3bb50dcf08ab222437f36ab2f644c1",
+    "bytes": 1640,
+    "source": "Desktop/my-math-agent/test_noise_estimation.py"
+  },
+  {
+    "file": "test_ten_anchor_noise.py",
+    "sha256": "8251569c3f1aad34141d19fa117f724ff1f05d53eba0bfc5ec4b2c6deb5ba961",
+    "bytes": 2298,
+    "source": "Desktop/my-math-agent/test_ten_anchor_noise.py"
+  },
+  {
+    "file": "test_ten_anchors.py",
+    "sha256": "acb7bc01ac339d7a085356d1f40654aabb02015b48a5d3b7ba37baace6a97404",
+    "bytes": 2745,
+    "source": "Desktop/my-math-agent/test_ten_anchors.py"
+  },
+  {
+    "file": "test_weighted_localization.py",
+    "sha256": "8c0139c197d92009e5fcb4dbe2c4bd00fff02ae4a88496059fbc0ddedbcda51c",
+    "bytes": 3008,
+    "source": "Desktop/my-math-agent/test_weighted_localization.py"
+  },
+  {
+    "file": "threshold_sensitivity.py",
+    "sha256": "48801897f47ef624f6ad833ea2504c7b49d8b2042838a6cfab7413f0f77f42a7",
+    "bytes": 1583,
+    "source": "Desktop/my-math-agent/threshold_sensitivity.py"
+  },
+  {
+    "file": "traditional_search.py",
+    "sha256": "129f8368869fe97e9e2bc3205985bf2cbba77aeb7c760ebde0fa63ad7f641912",
+    "bytes": 3588,
+    "source": "Desktop/my-math-agent/traditional_search.py"
+  },
+  {
+    "file": "traditional_search_results.json",
+    "sha256": "0776170f46f6a23dbb09320eb67d0c877b73bdb000ebbf8b9213fcbadb3cba10",
+    "bytes": 9416,
+    "source": "Desktop/my-math-agent/traditional_search_results.json"
+  },
+  {
+    "file": "v3_holdout_comparison.json",
+    "sha256": "78196f7a120fb0e0232dace39e4553884a7cc4965b221c01801218bfd3c5772a",
+    "bytes": 5221,
+    "source": "Desktop/my-math-agent/v3_holdout_comparison.json"
+  },
+  {
+    "file": "verify_agent_holdout.py",
+    "sha256": "459929e15fbda88a7da4cf4c5c22e9c37a69bf2e3da9522a1a583d0243006a25",
+    "bytes": 3628,
+    "source": "Desktop/my-math-agent/verify_agent_holdout.py"
+  },
+  {
+    "file": "weighted_localization.py",
+    "sha256": "5d3c8efa1f546b85710ee5342f694d11d6bb5b1ee6ebfac02877fbe3f7ac166e",
+    "bytes": 4314,
+    "source": "Desktop/my-math-agent/weighted_localization.py"
+  }
+]

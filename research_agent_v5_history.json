@@ -1,0 +1,580 @@
+{
+  "model": "deepseek-v4-pro",
+  "round_limit": 12,
+  "development_seed": 2052,
+  "holdout_seed": 9052,
+  "experiments": [
+    {
+      "round": 1,
+      "proposal": {
+        "family": "cauchy",
+        "tau": 1.0,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "Cauchy权重随残差平方以1/(1+(r/tau)^2)衰减，相比Huber对远距离异常值压得更重，预期降低异常值对代价的影响从而改善macro_cep90。tau=1.0提供中等衰减速度，min_weight=0.1保留弱权重而非完全剔除。",
+      "metrics": {
+        "mean_error": 0.401,
+        "cep90": 0.8663,
+        "macro_cep90": 0.5961,
+        "max_error": 2.0005,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.133,
+          "standard|sigma=0.5": 0.4367,
+          "standard|sigma=1.0": 1.0494,
+          "random_layout|sigma=0.2": 0.2619,
+          "random_layout|sigma=0.5": 0.4901,
+          "random_layout|sigma=1.0": 1.0459,
+          "two_outliers|sigma=0.2": 0.1371,
+          "two_outliers|sigma=0.5": 0.4057,
+          "two_outliers|sigma=1.0": 1.1107,
+          "small_outlier|sigma=0.2": 0.1566,
+          "small_outlier|sigma=0.5": 0.6431,
+          "small_outlier|sigma=1.0": 1.2826
+        },
+        "average_weight": 0.7465,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 2,
+      "proposal": {
+        "family": "cauchy",
+        "tau": 0.5,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "上一轮Cauchy tau=1.0得到macro_cep90=0.5961，优于Huber(0.7311)但仍差于fixed(0.6325)和adaptive(0.543)。平均权重0.7465偏高，说明衰减还不够快。降低tau到0.5使权重更快衰减，预期进一步压低高残差异常节点的贡献，改善鲁棒性。",
+      "metrics": {
+        "mean_error": 0.4055,
+        "cep90": 0.8693,
+        "macro_cep90": 0.6036,
+        "max_error": 2.0205,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1546,
+          "standard|sigma=0.5": 0.441,
+          "standard|sigma=1.0": 1.055,
+          "random_layout|sigma=0.2": 0.2624,
+          "random_layout|sigma=0.5": 0.475,
+          "random_layout|sigma=1.0": 1.0778,
+          "two_outliers|sigma=0.2": 0.1364,
+          "two_outliers|sigma=0.5": 0.4177,
+          "two_outliers|sigma=1.0": 1.1167,
+          "small_outlier|sigma=0.2": 0.1547,
+          "small_outlier|sigma=0.5": 0.7033,
+          "small_outlier|sigma=1.0": 1.2486
+        },
+        "average_weight": 0.6026,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 3,
+      "proposal": {
+        "family": "cauchy",
+        "tau": 2.0,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "tau=0.5(0.6036)比tau=1.0(0.5961)更差，说明权重衰减过快导致大量正常节点也被降权，损失了有效信息。反方向尝试tau=2.0，让权重衰减更平缓，只对真正的远距离异常值降权，预期保留更多正常节点信息，改善定位精度。",
+      "metrics": {
+        "mean_error": 0.3895,
+        "cep90": 0.8307,
+        "macro_cep90": 0.5821,
+        "max_error": 1.8325,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1409,
+          "standard|sigma=0.5": 0.4252,
+          "standard|sigma=1.0": 1.0093,
+          "random_layout|sigma=0.2": 0.2617,
+          "random_layout|sigma=0.5": 0.4646,
+          "random_layout|sigma=1.0": 0.9943,
+          "two_outliers|sigma=0.2": 0.1375,
+          "two_outliers|sigma=0.5": 0.4078,
+          "two_outliers|sigma=1.0": 1.0849,
+          "small_outlier|sigma=0.2": 0.1921,
+          "small_outlier|sigma=0.5": 0.6372,
+          "small_outlier|sigma=1.0": 1.2302
+        },
+        "average_weight": 0.8418,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 4,
+      "proposal": {
+        "family": "cauchy",
+        "tau": 3.0,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "tau=2.0得到0.5821，优于tau=1.0(0.5961)和tau=0.5(0.6036)，趋势单调改善。继续增大tau到3.0，进一步平缓衰减，预期宏观CEP90继续下降。检验该单调趋势是否在更大tau处持续。",
+      "metrics": {
+        "mean_error": 0.3863,
+        "cep90": 0.8379,
+        "macro_cep90": 0.5638,
+        "max_error": 1.6909,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1425,
+          "standard|sigma=0.5": 0.4207,
+          "standard|sigma=1.0": 0.8703,
+          "random_layout|sigma=0.2": 0.2646,
+          "random_layout|sigma=0.5": 0.459,
+          "random_layout|sigma=1.0": 0.9695,
+          "two_outliers|sigma=0.2": 0.1401,
+          "two_outliers|sigma=0.5": 0.4184,
+          "two_outliers|sigma=1.0": 1.051,
+          "small_outlier|sigma=0.2": 0.2164,
+          "small_outlier|sigma=0.5": 0.637,
+          "small_outlier|sigma=1.0": 1.176
+        },
+        "average_weight": 0.8757,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 5,
+      "proposal": {
+        "family": "cauchy",
+        "tau": 4.0,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "tau=3.0得到0.5638，接近adaptive(0.543)，趋势仍单调改善(tau越大越好)。继续增大到tau=4.0(工具上限)，检验是否接近普通最小二乘极限并确认最优在边界。",
+      "metrics": {
+        "mean_error": 0.3847,
+        "cep90": 0.8223,
+        "macro_cep90": 0.5612,
+        "max_error": 1.6171,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.141,
+          "standard|sigma=0.5": 0.4094,
+          "standard|sigma=1.0": 0.8149,
+          "random_layout|sigma=0.2": 0.2737,
+          "random_layout|sigma=0.5": 0.4691,
+          "random_layout|sigma=1.0": 0.9479,
+          "two_outliers|sigma=0.2": 0.1487,
+          "two_outliers|sigma=0.5": 0.5019,
+          "two_outliers|sigma=1.0": 1.0144,
+          "small_outlier|sigma=0.2": 0.2303,
+          "small_outlier|sigma=0.5": 0.6372,
+          "small_outlier|sigma=1.0": 1.1454
+        },
+        "average_weight": 0.8972,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 6,
+      "proposal": {
+        "family": "clipped_inverse",
+        "tau": 1.0,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "Cauchy在tau=4.0达到0.5612，接近但未超过adaptive(0.543)。Cauchy尾部仍是二次衰减，对中等异常值可能降权不足。尝试clipped_inverse(1/残差尺度)族，其衰减更陡峭，配min_weight=0.1下界防止过零，预期比Cauchy更有效地抑制异常值。",
+      "metrics": {
+        "mean_error": 0.3895,
+        "cep90": 0.838,
+        "macro_cep90": 0.5806,
+        "max_error": 1.762,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1446,
+          "standard|sigma=0.5": 0.4156,
+          "standard|sigma=1.0": 1.0174,
+          "random_layout|sigma=0.2": 0.2646,
+          "random_layout|sigma=0.5": 0.4462,
+          "random_layout|sigma=1.0": 0.9648,
+          "two_outliers|sigma=0.2": 0.1403,
+          "two_outliers|sigma=0.5": 0.4288,
+          "two_outliers|sigma=1.0": 1.0751,
+          "small_outlier|sigma=0.2": 0.1913,
+          "small_outlier|sigma=0.5": 0.6207,
+          "small_outlier|sigma=1.0": 1.2583
+        },
+        "average_weight": 0.8818,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 7,
+      "proposal": {
+        "family": "clipped_inverse",
+        "tau": 0.5,
+        "delta": 0.5,
+        "min_weight": 0.1
+      },
+      "hypothesis": "clipped_inverse tau=1.0得到0.5806，差于Cauchy tau=4.0(0.5612)。降低tau到0.5使逆衰减更快，权重随残差更陡下降，预期更激进地抑制异常值，测试该族是否在更小tau处表现更好。",
+      "metrics": {
+        "mean_error": 0.4001,
+        "cep90": 0.8526,
+        "macro_cep90": 0.5983,
+        "max_error": 2.0029,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1458,
+          "standard|sigma=0.5": 0.4275,
+          "standard|sigma=1.0": 1.0681,
+          "random_layout|sigma=0.2": 0.2616,
+          "random_layout|sigma=0.5": 0.5184,
+          "random_layout|sigma=1.0": 1.0611,
+          "two_outliers|sigma=0.2": 0.1376,
+          "two_outliers|sigma=0.5": 0.3925,
+          "two_outliers|sigma=1.0": 1.1101,
+          "small_outlier|sigma=0.2": 0.16,
+          "small_outlier|sigma=0.5": 0.6616,
+          "small_outlier|sigma=1.0": 1.2353
+        },
+        "average_weight": 0.7908,
+        "average_low_weight_nodes": 0.0
+      }
+    },
+    {
+      "round": 8,
+      "proposal": {
+        "family": "gaussian",
+        "tau": 1.0,
+        "delta": 0.5,
+        "min_weight": 0.0
+      },
+      "hypothesis": "Cauchy(tau大)表现最好0.5612，说明平缓的衰减对当前数据更优。高斯的exp(-(r/tau)^2)形式在尾部比Cauchy衰减更快但首段平滑，且min_weight=0允许完全剔除远异常值。此为不同函数族探索，预期检验高斯平滑衰减是否优于Cauchy。",
+      "metrics": {
+        "mean_error": 0.4031,
+        "cep90": 0.8722,
+        "macro_cep90": 0.6005,
+        "max_error": 2.0608,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1418,
+          "standard|sigma=0.5": 0.4351,
+          "standard|sigma=1.0": 1.0324,
+          "random_layout|sigma=0.2": 0.2506,
+          "random_layout|sigma=0.5": 0.4694,
+          "random_layout|sigma=1.0": 1.0505,
+          "two_outliers|sigma=0.2": 0.1401,
+          "two_outliers|sigma=0.5": 0.4041,
+          "two_outliers|sigma=1.0": 1.1366,
+          "small_outlier|sigma=0.2": 0.1519,
+          "small_outlier|sigma=0.5": 0.6397,
+          "small_outlier|sigma=1.0": 1.3538
+        },
+        "average_weight": 0.7728,
+        "average_low_weight_nodes": 1.1833
+      }
+    },
+    {
+      "round": 9,
+      "proposal": {
+        "family": "gaussian",
+        "tau": 2.0,
+        "delta": 0.5,
+        "min_weight": 0.0
+      },
+      "hypothesis": "gaussian tau=1.0(min_weight=0)得到0.6005，差于Cauchy大tau。高斯的下降过快再次表明过强抑制有害。增大tau到2.0使衰减更缓，同时保持min_weight=0剔除极端异常值，检验是否能接近Cauchy tau=4.0的表现。",
+      "metrics": {
+        "mean_error": 0.3876,
+        "cep90": 0.8147,
+        "macro_cep90": 0.5777,
+        "max_error": 1.8329,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1471,
+          "standard|sigma=0.5": 0.4285,
+          "standard|sigma=1.0": 0.9688,
+          "random_layout|sigma=0.2": 0.2506,
+          "random_layout|sigma=0.5": 0.437,
+          "random_layout|sigma=1.0": 0.991,
+          "two_outliers|sigma=0.2": 0.1398,
+          "two_outliers|sigma=0.5": 0.4076,
+          "two_outliers|sigma=1.0": 1.0972,
+          "small_outlier|sigma=0.2": 0.2048,
+          "small_outlier|sigma=0.5": 0.6363,
+          "small_outlier|sigma=1.0": 1.2235
+        },
+        "average_weight": 0.8553,
+        "average_low_weight_nodes": 1.0
+      }
+    },
+    {
+      "round": 10,
+      "proposal": {
+        "family": "gaussian",
+        "tau": 4.0,
+        "delta": 0.5,
+        "min_weight": 0.0
+      },
+      "hypothesis": "gaussian tau=2.0得到0.5777，比tau=1.0(0.6005)改善，趋势与Cauchy一致(越缓越好)。增大tau到4.0，接近均匀加权极限但保留尾部剔除(min_weight=0)，检验是否优于Cauchy tau=4.0(0.5612)。",
+      "metrics": {
+        "mean_error": 0.382,
+        "cep90": 0.8164,
+        "macro_cep90": 0.5534,
+        "max_error": 1.5531,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1435,
+          "standard|sigma=0.5": 0.4201,
+          "standard|sigma=1.0": 0.8264,
+          "random_layout|sigma=0.2": 0.2665,
+          "random_layout|sigma=0.5": 0.455,
+          "random_layout|sigma=1.0": 0.9466,
+          "two_outliers|sigma=0.2": 0.1415,
+          "two_outliers|sigma=0.5": 0.4193,
+          "two_outliers|sigma=1.0": 1.0199,
+          "small_outlier|sigma=0.2": 0.2412,
+          "small_outlier|sigma=0.5": 0.6376,
+          "small_outlier|sigma=1.0": 1.1233
+        },
+        "average_weight": 0.9007,
+        "average_low_weight_nodes": 0.1667
+      }
+    },
+    {
+      "round": 11,
+      "proposal": {
+        "family": "gaussian",
+        "tau": 4.0,
+        "delta": 1.0,
+        "min_weight": 0.0
+      },
+      "hypothesis": "gaussian tau=4.0, delta=0.5得到0.5534，创下当前最优，非常接近adaptive(0.543)。当前只调了权重族和tau，delta固定0.5。增大delta到1.0改变Huber损失本身的线性区间，使中等残差用L2处理的范围更宽，影响残差估计从而改变权重分布。预期进一步压缩中等异常值的贡献。",
+      "metrics": {
+        "mean_error": 0.3785,
+        "cep90": 0.7596,
+        "macro_cep90": 0.5512,
+        "max_error": 1.3377,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1483,
+          "standard|sigma=0.5": 0.4124,
+          "standard|sigma=1.0": 0.7862,
+          "random_layout|sigma=0.2": 0.2834,
+          "random_layout|sigma=0.5": 0.3896,
+          "random_layout|sigma=1.0": 0.8614,
+          "two_outliers|sigma=0.2": 0.1567,
+          "two_outliers|sigma=0.5": 0.437,
+          "two_outliers|sigma=1.0": 0.8882,
+          "small_outlier|sigma=0.2": 0.3567,
+          "small_outlier|sigma=0.5": 0.6998,
+          "small_outlier|sigma=1.0": 1.1943
+        },
+        "average_weight": 0.9007,
+        "average_low_weight_nodes": 0.1667
+      }
+    },
+    {
+      "round": 12,
+      "proposal": {
+        "family": "gaussian",
+        "tau": 4.0,
+        "delta": 2.0,
+        "min_weight": 0.0
+      },
+      "hypothesis": "delta从0.5到1.0使macro_cep90从0.5534降到0.5512，略微改善且mean_error下降明显(0.382→0.3785)，max_error大幅下降(1.55→1.34)。继续增大delta到2.0，扩大L2区间，预期进一步平滑残差估计并降低极端误差。",
+      "metrics": {
+        "mean_error": 0.4024,
+        "cep90": 0.8035,
+        "macro_cep90": 0.5911,
+        "max_error": 1.3812,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1766,
+          "standard|sigma=0.5": 0.42,
+          "standard|sigma=1.0": 0.8439,
+          "random_layout|sigma=0.2": 0.3195,
+          "random_layout|sigma=0.5": 0.3814,
+          "random_layout|sigma=1.0": 0.8564,
+          "two_outliers|sigma=0.2": 0.1919,
+          "two_outliers|sigma=0.5": 0.4849,
+          "two_outliers|sigma=1.0": 0.9002,
+          "small_outlier|sigma=0.2": 0.5245,
+          "small_outlier|sigma=0.5": 0.8398,
+          "small_outlier|sigma=1.0": 1.1541
+        },
+        "average_weight": 0.9007,
+        "average_low_weight_nodes": 0.1667
+      }
+    }
+  ],
+  "api_statistics": {
+    "request_count": 12,
+    "input_tokens": 38689,
+    "output_tokens": 2222,
+    "estimated_v5_cost_cny": 0.449014,
+    "previous_spend_cny": 0.03
+  },
+  "final": {
+    "development_baselines": {
+      "huber": {
+        "mean_error": 0.4708,
+        "cep90": 0.908,
+        "macro_cep90": 0.7311,
+        "max_error": 1.2606,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.352,
+          "standard|sigma=0.5": 0.5233,
+          "standard|sigma=1.0": 1.0725,
+          "random_layout|sigma=0.2": 0.5237,
+          "random_layout|sigma=0.5": 0.5236,
+          "random_layout|sigma=1.0": 0.9503,
+          "two_outliers|sigma=0.2": 0.5966,
+          "two_outliers|sigma=0.5": 0.9762,
+          "two_outliers|sigma=1.0": 1.0627,
+          "small_outlier|sigma=0.2": 0.3737,
+          "small_outlier|sigma=0.5": 0.7114,
+          "small_outlier|sigma=1.0": 1.1068
+        }
+      },
+      "fixed": {
+        "mean_error": 0.4275,
+        "cep90": 0.8169,
+        "macro_cep90": 0.6325,
+        "max_error": 2.2091,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1473,
+          "standard|sigma=0.5": 0.4062,
+          "standard|sigma=1.0": 0.8615,
+          "random_layout|sigma=0.2": 0.2505,
+          "random_layout|sigma=0.5": 0.4004,
+          "random_layout|sigma=1.0": 0.9148,
+          "two_outliers|sigma=0.2": 0.1398,
+          "two_outliers|sigma=0.5": 0.4447,
+          "two_outliers|sigma=1.0": 1.0859,
+          "small_outlier|sigma=0.2": 0.5266,
+          "small_outlier|sigma=0.5": 0.8566,
+          "small_outlier|sigma=1.0": 1.5553
+        }
+      },
+      "adaptive": {
+        "mean_error": 0.3557,
+        "cep90": 0.7872,
+        "macro_cep90": 0.543,
+        "max_error": 1.5423,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1473,
+          "standard|sigma=0.5": 0.4251,
+          "standard|sigma=1.0": 0.7742,
+          "random_layout|sigma=0.2": 0.2505,
+          "random_layout|sigma=0.5": 0.5507,
+          "random_layout|sigma=1.0": 0.9701,
+          "two_outliers|sigma=0.2": 0.1398,
+          "two_outliers|sigma=0.5": 0.4447,
+          "two_outliers|sigma=1.0": 1.1076,
+          "small_outlier|sigma=0.2": 0.1468,
+          "small_outlier|sigma=0.5": 0.6637,
+          "small_outlier|sigma=1.0": 0.895
+        }
+      }
+    },
+    "best_candidate": {
+      "round": 11,
+      "proposal": {
+        "family": "gaussian",
+        "tau": 4.0,
+        "delta": 1.0,
+        "min_weight": 0.0
+      },
+      "hypothesis": "gaussian tau=4.0, delta=0.5得到0.5534，创下当前最优，非常接近adaptive(0.543)。当前只调了权重族和tau，delta固定0.5。增大delta到1.0改变Huber损失本身的线性区间，使中等残差用L2处理的范围更宽，影响残差估计从而改变权重分布。预期进一步压缩中等异常值的贡献。",
+      "metrics": {
+        "mean_error": 0.3785,
+        "cep90": 0.7596,
+        "macro_cep90": 0.5512,
+        "max_error": 1.3377,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.1483,
+          "standard|sigma=0.5": 0.4124,
+          "standard|sigma=1.0": 0.7862,
+          "random_layout|sigma=0.2": 0.2834,
+          "random_layout|sigma=0.5": 0.3896,
+          "random_layout|sigma=1.0": 0.8614,
+          "two_outliers|sigma=0.2": 0.1567,
+          "two_outliers|sigma=0.5": 0.437,
+          "two_outliers|sigma=1.0": 0.8882,
+          "small_outlier|sigma=0.2": 0.3567,
+          "small_outlier|sigma=0.5": 0.6998,
+          "small_outlier|sigma=1.0": 1.1943
+        },
+        "average_weight": 0.9007,
+        "average_low_weight_nodes": 0.1667
+      }
+    },
+    "holdout_baselines": {
+      "huber": {
+        "mean_error": 0.5379,
+        "cep90": 1.0573,
+        "macro_cep90": 0.8684,
+        "max_error": 4.2224,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.3689,
+          "standard|sigma=0.5": 0.6796,
+          "standard|sigma=1.0": 1.488,
+          "random_layout|sigma=0.2": 0.5502,
+          "random_layout|sigma=0.5": 0.7907,
+          "random_layout|sigma=1.0": 1.0084,
+          "two_outliers|sigma=0.2": 0.6222,
+          "two_outliers|sigma=0.5": 1.1864,
+          "two_outliers|sigma=1.0": 1.6607,
+          "small_outlier|sigma=0.2": 0.433,
+          "small_outlier|sigma=0.5": 0.4847,
+          "small_outlier|sigma=1.0": 1.1484
+        }
+      },
+      "fixed": {
+        "mean_error": 0.4415,
+        "cep90": 0.9741,
+        "macro_cep90": 0.7108,
+        "max_error": 1.5391,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.2008,
+          "standard|sigma=0.5": 0.5319,
+          "standard|sigma=1.0": 1.1437,
+          "random_layout|sigma=0.2": 0.2274,
+          "random_layout|sigma=0.5": 0.5329,
+          "random_layout|sigma=1.0": 1.2601,
+          "two_outliers|sigma=0.2": 0.1788,
+          "two_outliers|sigma=0.5": 0.6375,
+          "two_outliers|sigma=1.0": 1.2344,
+          "small_outlier|sigma=0.2": 0.5463,
+          "small_outlier|sigma=0.5": 0.5872,
+          "small_outlier|sigma=1.0": 1.4488
+        }
+      },
+      "adaptive": {
+        "mean_error": 0.404,
+        "cep90": 0.8627,
+        "macro_cep90": 0.6606,
+        "max_error": 1.5391,
+        "per_case_cep90": {
+          "standard|sigma=0.2": 0.2008,
+          "standard|sigma=0.5": 0.5794,
+          "standard|sigma=1.0": 1.4857,
+          "random_layout|sigma=0.2": 0.2274,
+          "random_layout|sigma=0.5": 0.5329,
+          "random_layout|sigma=1.0": 1.179,
+          "two_outliers|sigma=0.2": 0.1788,
+          "two_outliers|sigma=0.5": 0.6375,
+          "two_outliers|sigma=1.0": 1.2344,
+          "small_outlier|sigma=0.2": 0.1905,
+          "small_outlier|sigma=0.5": 0.4609,
+          "small_outlier|sigma=1.0": 1.02
+        }
+      }
+    },
+    "holdout_candidate": {
+      "mean_error": 0.4128,
+      "cep90": 0.8512,
+      "macro_cep90": 0.6777,
+      "max_error": 1.9673,
+      "per_case_cep90": {
+        "standard|sigma=0.2": 0.1996,
+        "standard|sigma=0.5": 0.5463,
+        "standard|sigma=1.0": 1.2648,
+        "random_layout|sigma=0.2": 0.2995,
+        "random_layout|sigma=0.5": 0.5504,
+        "random_layout|sigma=1.0": 0.9456,
+        "two_outliers|sigma=0.2": 0.2056,
+        "two_outliers|sigma=0.5": 0.6838,
+        "two_outliers|sigma=1.0": 1.3772,
+        "small_outlier|sigma=0.2": 0.4178,
+        "small_outlier|sigma=0.5": 0.472,
+        "small_outlier|sigma=1.0": 1.1702
+      },
+      "average_weight": 0.9032,
+      "average_low_weight_nodes": 0.175
+    },
+    "difference": -0.0171
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "model": "deepseek-chat",
+  "development_seed": 2041,
+  "holdout_seed": 9041,
+  "trials_per_case": 10,
+  "experiments": [
+    {
+      "method": "huber",
+      "parameter": 1.0,
+      "sample_count": 120,
+      "mean_error": 0.5263,
+      "cep90": 0.988,
+      "macro_cep90": 0.8074,
+      "max_error": 2.0068,
+      "exact_outlier_detection_rate": null,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.2764,
+          "cep90": 0.5191
+        },
+        "standard|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3967,
+          "cep90": 0.7697
+        },
+        "standard|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.9059,
+          "cep90": 1.3769
+        },
+        "random_layout|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.2976,
+          "cep90": 0.4594
+        },
+        "random_layout|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3504,
+          "cep90": 0.4233
+        },
+        "random_layout|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.9087,
+          "cep90": 1.4342
+        },
+        "two_outliers|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.3587,
+          "cep90": 0.529
+        },
+        "two_outliers|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.512,
+          "cep90": 0.9309
+        },
+        "two_outliers|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8708,
+          "cep90": 1.286
+        },
+        "small_outlier|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.2722,
+          "cep90": 0.3455
+        },
+        "small_outlier|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4205,
+          "cep90": 0.5412
+        },
+        "small_outlier|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.7454,
+          "cep90": 1.073
+        }
+      },
+      "round": 1
+    },
+    {
+      "method": "fixed_geometry",
+      "parameter": 1.5,
+      "sample_count": 120,
+      "mean_error": 0.4643,
+      "cep90": 0.9434,
+      "macro_cep90": 0.7015,
+      "max_error": 2.1157,
+      "exact_outlier_detection_rate": 0.675,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1348,
+          "cep90": 0.2805
+        },
+        "standard|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3152,
+          "cep90": 0.5139
+        },
+        "standard|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.808,
+          "cep90": 1.1057
+        },
+        "random_layout|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1395,
+          "cep90": 0.1971
+        },
+        "random_layout|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3737,
+          "cep90": 0.4713
+        },
+        "random_layout|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8674,
+          "cep90": 1.289
+        },
+        "two_outliers|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1459,
+          "cep90": 0.1746
+        },
+        "two_outliers|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3791,
+          "cep90": 0.5633
+        },
+        "two_outliers|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.7126,
+          "cep90": 1.4746
+        },
+        "small_outlier|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.3697,
+          "cep90": 0.5004
+        },
+        "small_outlier|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4793,
+          "cep90": 0.5695
+        },
+        "small_outlier|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.8459,
+          "cep90": 1.2783
+        }
+      },
+      "round": 2
+    },
+    {
+      "method": "adaptive_geometry",
+      "parameter": 2.0,
+      "sample_count": 120,
+      "mean_error": 0.4314,
+      "cep90": 0.9129,
+      "macro_cep90": 0.7062,
+      "max_error": 1.9626,
+      "exact_outlier_detection_rate": 0.7167,
+      "per_case": {
+        "standard|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1348,
+          "cep90": 0.2805
+        },
+        "standard|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3776,
+          "cep90": 0.7009
+        },
+        "standard|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.6919,
+          "cep90": 1.0531
+        },
+        "random_layout|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1395,
+          "cep90": 0.1971
+        },
+        "random_layout|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.3709,
+          "cep90": 0.4713
+        },
+        "random_layout|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.9165,
+          "cep90": 1.6003
+        },
+        "two_outliers|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.1339,
+          "cep90": 0.1746
+        },
+        "two_outliers|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4083,
+          "cep90": 0.5633
+        },
+        "two_outliers|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.7261,
+          "cep90": 1.2903
+        },
+        "small_outlier|sigma=0.2": {
+          "sample_count": 10,
+          "mean_error": 0.0985,
+          "cep90": 0.1631
+        },
+        "small_outlier|sigma=0.5": {
+          "sample_count": 10,
+          "mean_error": 0.4096,
+          "cep90": 0.734
+        },
+        "small_outlier|sigma=1.0": {
+          "sample_count": 10,
+          "mean_error": 0.769,
+          "cep90": 1.2459
+        }
+      },
+      "round": 3
+    }
+  ],
+  "agent_summary": "## 三轮实验结果对比\n\n| 轮次 | 方法 | 参数 | macro_cep90 | mean_error | max_error | 异常检测率 |\n|---|---|---|---|---|---|---|\n| 1 | huber | 1.0 | 0.8074 | 0.5263 | 2.0068 | — |\n| 2 | fixed_geometry | 1.5 | **0.7015** | 0.4643 | 2.1157 | 0.675 |\n| 3 | adaptive_geometry | 2.0 | 0.7062 | **0.4314** | **1.9626** | **0.7167** |\n\n### 各策略的适用与失败场景\n\n**Huber (1.0)** — 整体最弱（macro_cep90 0.8074）。\n- 适用：小异常场景（small_outlier σ=0.2 时 cep90=0.3455，尚可）。\n- 失败：two_outliers 与 standard σ=1.0 下 cep90 达 1.29–1.38；对两个异常节点缺乏结构性抵抗，鲁棒性主要靠单点降权，无法处理成组异常。\n\n**fixed_geometry (1.5)** — macro_cep90 最低（0.7015）。\n- 适用：低噪声标准/随机布局（σ=0.2 时 cep90 仅 0.20–0.28），two_outliers σ=0.2 也仅 0.1746。\n- 失败：two_outliers σ=1.0 时 cep90 飙到 1.4746（本组最差），说明固定几何约束在高噪声+双异常下会与异常观测冲突；small_outlier 各档普遍偏高（0.50–1.28），对小幅异常不敏感。\n\n**adaptive_geometry (2.0)** — macro_cep90 次低（0.7062），但平均误差与最大误差最优、检测率最高。\n- 适用：small_outlier 全档（σ=0.2 时 cep90=0.1631，为全场最佳）、two_outliers σ=0.2、standard σ=1.0（cep90=1.0531，优于前两者）。\n- 失败：random_layout σ=1.0 时 cep90=1.6003（本组最差），自适应几何在高噪声随机布局下可能过度调整、放大误差；standard σ=0.5 也偏弱（0.7009）。\n\n### 最低 macro_cep90 候选\n**fixed_geometry (1.5)，macro_cep90 = 0.7015**，为三轮最低。但需注意它与 adaptive_geometry (2.0) 差距极小（0.7015 vs 0.7062），且后者在平均误差、最大误差、异常检测率三项上全面更优，仅在 random_layout σ=1.0 单场景明显失分。若目标兼顾整体误差与检测，adaptive_geometry 更均衡；若严格以 macro_cep90 为准，选 fixed_geometry。\n\n### 局限说明\n三轮仅各测一个参数点，远不足以证明全局最优：参数敏感性未扫描（如 huber 的阈值、两种几何方法的约束强度），方法×参数交互未覆盖，且单场景（random_layout σ=1.0）的极端失分可能主导 macro 均值，存在偶然性。\n\n### 下一阶段建议\n1. **参数扫描**：对 fixed_geometry 与 adaptive_geometry 在 1.0–3.0 间做网格，定位 macro_cep90 谷底，验证 1.5/2.0 是否接近最优。\n2. **场景加权分析**：单独报告 random_layout σ=1.0 与 two_outliers σ=1.0 两个\"拖后腿\"场景，判断是方法缺陷还是参数失配。\n3. **混合策略**：考虑按噪声强度切换（低噪声用 fixed_geometry、高噪声/小异常用 adaptive_geometry），但需作为参数化组合而非新算法声明。\n4. **检测率与精度权衡**：adaptive_geometry 检测率最高（0.7167），可研究提高检测阈值是否进一步压低高噪声场景的 cep90。\n5. 增加重复采样以降低单次 10 样本带来的方差，避免用偶然结果下结论。",
+  "holdout_result": {
+    "method": "fixed_geometry",
+    "parameter": 1.5,
+    "sample_count": 120,
+    "mean_error": 0.3857,
+    "cep90": 0.744,
+    "macro_cep90": 0.6079,
+    "max_error": 2.0399,
+    "exact_outlier_detection_rate": 0.725,
+    "per_case": {
+      "standard|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1218,
+        "cep90": 0.1924
+      },
+      "standard|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3211,
+        "cep90": 0.5344
+      },
+      "standard|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.8456,
+        "cep90": 1.2265
+      },
+      "random_layout|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1192,
+        "cep90": 0.1546
+      },
+      "random_layout|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3113,
+        "cep90": 0.4877
+      },
+      "random_layout|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.5445,
+        "cep90": 0.8027
+      },
+      "two_outliers|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.1315,
+        "cep90": 0.1929
+      },
+      "two_outliers|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3156,
+        "cep90": 0.5104
+      },
+      "two_outliers|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.6461,
+        "cep90": 1.035
+      },
+      "small_outlier|sigma=0.2": {
+        "sample_count": 10,
+        "mean_error": 0.3852,
+        "cep90": 0.5639
+      },
+      "small_outlier|sigma=0.5": {
+        "sample_count": 10,
+        "mean_error": 0.3516,
+        "cep90": 0.4947
+      },
+      "small_outlier|sigma=1.0": {
+        "sample_count": 10,
+        "mean_error": 0.5346,
+        "cep90": 1.099
+      }
+    }
+  }
+}

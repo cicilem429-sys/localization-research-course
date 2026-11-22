@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="470" height="235" preserveAspectRatio="xMinYMin meet" viewBox="0 0 470 235" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="470" height="235"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-235)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="8" y="219" style="font-family: Helvetica; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,438) scale(1,-1)">Mean macro-CEP90 across 5 seeds (m)</text>
+			<path d="M 108,39 L 108,198 Z" style="stroke: rgb(88%,90%,94%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="102" y="24" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,48) scale(1,-1)">0.0</text>
+			<path d="M 180,39 L 180,198 Z" style="stroke: rgb(88%,90%,94%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="174" y="24" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,48) scale(1,-1)">0.2</text>
+			<path d="M 252,39 L 252,198 Z" style="stroke: rgb(88%,90%,94%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="246" y="24" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,48) scale(1,-1)">0.4</text>
+			<path d="M 324,39 L 324,198 Z" style="stroke: rgb(88%,90%,94%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="318" y="24" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,48) scale(1,-1)">0.6</text>
+			<path d="M 396,39 L 396,198 Z" style="stroke: rgb(88%,90%,94%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="390" y="24" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,48) scale(1,-1)">0.8</text>
+			<text x="2" y="181" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,362) scale(1,-1)">Huber</text>
+			<rect x="108" y="175" width="267.696" height="16" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,54%); fill-rule: evenodd;"/>
+			<path d="M 360.18,183 L 391.212,183 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 360.18,179 L 360.18,187 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 391.212,179 L 391.212,187 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="396.21200000000005" y="180" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,360) scale(1,-1)">0.7436</text>
+			<text x="2" y="150" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,300) scale(1,-1)">Fixed geometry</text>
+			<rect x="108" y="144" width="235.26" height="16" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(21%,63%,72%); fill-rule: evenodd;"/>
+			<path d="M 325.224,152 L 361.296,152 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 325.224,148 L 325.224,156 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 361.296,148 L 361.296,156 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="366.296" y="149" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,298) scale(1,-1)">0.6535</text>
+			<text x="2" y="119" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,238) scale(1,-1)">Adaptive geometry</text>
+			<rect x="108" y="113" width="205.74" height="16" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(5%,46%,43%); fill-rule: evenodd;"/>
+			<path d="M 296.748,121 L 330.732,121 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 296.748,117 L 296.748,125 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 330.732,117 L 330.732,125 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="335.732" y="118" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,236) scale(1,-1)">0.5715</text>
+			<text x="2" y="88" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,176) scale(1,-1)">V5 weights</text>
+			<rect x="108" y="82" width="215.17200000000003" height="16" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(84%,58%,13%); fill-rule: evenodd;"/>
+			<path d="M 309.168,90 L 337.176,90 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 309.168,86 L 309.168,94 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 337.176,86 L 337.176,94 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="342.17600000000004" y="87" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,174) scale(1,-1)">0.5977</text>
+			<text x="2" y="57" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,114) scale(1,-1)">V6 support</text>
+			<rect x="108" y="51" width="223.70399999999995" height="16" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(54%,40%,72%); fill-rule: evenodd;"/>
+			<path d="M 310.608,59 L 352.8,59 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 310.608,55 L 310.608,63 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 352.8,55 L 352.8,63 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="357.79999999999995" y="56" style="font-family: Times-Roman; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,112) scale(1,-1)">0.6214</text>
+			<text x="108" y="5" style="font-family: Times-Roman; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,10) scale(1,-1)">Error bars: sample standard deviation across seeds (not CI)</text>
+		</g>
+	</g>
+</svg>
